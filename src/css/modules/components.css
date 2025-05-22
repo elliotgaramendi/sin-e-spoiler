@@ -144,7 +144,7 @@
 
   &:hover {
     --primary-card-color: var(--primary-color);
-    transform: scale(1.0625);
+    transform: scale(1.025);
   }
 }
 
@@ -171,6 +171,43 @@
   gap: var(--size);
   padding: calc(var(--size) * 4);
   background-color: var(--secondary-background);
+}
+
+.form {
+  width: min(calc(var(--size) * 80), 100%);
+  display: flex;
+  flex-direction: column;
+
+  @media (width >=768px) {
+    width: min(calc(var(--size) * 128), 100%);
+  }
+}
+
+.form__input {
+  padding: 0.75em 1.25em;
+  border: calc(var(--size) * 0.5) solid var(--primary-color);
+  border-radius: var(--border-radius);
+  box-shadow:
+    0 0 calc(var(--size) * 2) 0 var(--primary-color),
+    0 0 calc(var(--size) * 5) 0 var(--secondary-color);
+  background-color: transparent;
+  font-family: var(--primary-font);
+  transition:
+    outline var(--transition-duration),
+    border-color var(--transition-duration),
+    box-shadow var(--transition-duration);
+
+  &:focus {
+    outline: calc(var(--size) * 0.0625) solid var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow:
+      0 0 calc(var(--size) * 4) 0 var(--primary-color),
+      0 0 calc(var(--size) * 7) 0 var(--secondary-color);
+  }
+
+  &::placeholder {
+    color: var(--secondary-text);
+  }
 }
 
 .footer {

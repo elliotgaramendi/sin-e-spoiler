@@ -14,6 +14,10 @@
   right: calc(var(--size) * 2);
 }
 
+.l-2 {
+  left: calc(var(--size) * 2);
+}
+
 .d-flex {
   display: flex;
 }
@@ -24,6 +28,10 @@
 
 .a-items-center {
   align-items: center;
+}
+
+.j-content-start {
+  justify-content: flex-start;
 }
 
 .j-content-end {
@@ -96,6 +104,10 @@
 
 .c-shadow {
   color: var(--shadow);
+}
+
+.c-secondary-text {
+  color: var(--secondary-text);
 }
 
 .f-weight-700 {

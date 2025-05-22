@@ -1,6 +1,7 @@
+import Button from "../widgets/Button";
 import Rating from "../widgets/Rating";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, isFavorite, onToggleFavorite = () => { } }) => {
   const { title, rating, genre, duration, image, description, showTimes } = movie;
 
   return (
@@ -12,7 +13,17 @@ const MovieCard = ({ movie }) => {
           className="card__image"
           loading="lazy"
         />
-        <span className="badge badge--primary interactive p-absolute t-2 r-2 f-weight-700">{genre}</span>
+        <span className="badge badge--primary interactive p-absolute t-2 l-2 f-weight-700">
+          {genre}
+        </span>
+        <Button
+          variant="secondary"
+          className="interactive p-absolute t-2 r-2"
+          onClick={() => onToggleFavorite(movie)}
+          aria-label={isFavorite ? `Remove ${title} from favorites` : `Add ${title} to favorites`}
+        >
+          {isFavorite ? "❤️" : "🤍"}
+        </Button>
       </div>
       <div className="card__body f-1 g-2">
         <h3 className="title title--2xs">{title}</h3>

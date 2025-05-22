@@ -26,6 +26,10 @@
   font-family: var(--secondary-font);
 }
 
+.text--lg {
+  font-size: calc(var(--size) * 4.5);
+}
+
 .text--sm {
   font-size: calc(var(--size) * 3.5);
 }
@@ -132,6 +136,11 @@
 .button--primary {
   --primary-button-color: var(--primary-color);
   --primary-button-text: var(--light-primary-text);
+}
+
+.button--secondary {
+  --primary-button-color: var(--secondary-color);
+  --primary-button-text: var(--primary-text);
 }
 
 .button--outline-primary {
