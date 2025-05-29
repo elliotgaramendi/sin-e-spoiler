@@ -140,7 +140,7 @@
 **📁 File Path**
 
 ```
-src/components/widgets/Button.jsx
+src/components/elements/Button.jsx
 ```
 
 ---
@@ -229,7 +229,7 @@ src/components/components/MovieCard.jsx
 **🧩 Code**
 
 ```jsx
-import Button from '../widgets/Button';
+import Button from '../elements/Button';
 import Rating from '../widgets/Rating';
 
 const MovieCard = ({ movie, isFavorite, onToggleFavorite = () => { } }) => {
