@@ -1,5 +1,5 @@
-import Button from "../widgets/Button";
-import Rating from "../widgets/Rating";
+import Button from '../widgets/Button';
+import Rating from '../widgets/Rating';
 
 const MovieCard = ({ movie, isFavorite, onToggleFavorite = () => { } }) => {
   const { title, rating, genre, duration, image, description, showTimes } = movie;

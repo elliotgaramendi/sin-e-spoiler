@@ -1,11 +1,11 @@
-import { useState } from "react";
-import Footer from "./components/layouts/Footer";
-import Header from "./components/layouts/Header";
-import Hero from "./components/modules/Hero";
-import MovieList from "./components/modules/MovieList";
-import { getMovies } from "./utils/movie.utils";
+import { useState } from 'react';
+import Footer from './components/layouts/Footer';
+import Header from './components/layouts/Header';
+import Hero from './components/modules/Hero';
+import MovieList from './components/modules/MovieList';
+import { getMovies } from './utils/movie.utils';
 
-const FAVORITE_KEY = "sin-e-favorites";
+const FAVORITE_KEY = 'sin-e-favorites';
 
 const App = () => {
   const [movies] = useState(getMovies());
@@ -13,25 +13,21 @@ const App = () => {
     const stored = localStorage.getItem(FAVORITE_KEY);
     return stored ? JSON.parse(stored) : [];
   });
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const handleToggleFavorite = (movie) => {
-    setFavorites((prev) => {
-      const exists = prev.some((fav) => fav.id === movie.id);
-      let updated;
-      if (exists) {
-        updated = prev.filter((fav) => fav.id !== movie.id);
-      } else {
-        updated = [...prev, movie];
-      }
+  const handleToggleFavorite = movie => {
+    setFavorites(prev => {
+      const exists = prev.some(favorite => favorite.id === movie.id);
+      const updated = exists
+        ? prev.filter(favorite => favorite.id !== movie.id)
+        : [...prev, movie];
       localStorage.setItem(FAVORITE_KEY, JSON.stringify(updated));
       return updated;
     });
   };
 
-  const filteredMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredMovies = movies.filter(m =>
+    m.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -40,7 +36,7 @@ const App = () => {
       <main className="main">
         <Hero handleEvent={setSearchTerm} />
         <MovieList
-          id="movies"
+          id="now-showing"
           title="Now Showing 🎬"
           movies={filteredMovies}
           favorites={favorites}

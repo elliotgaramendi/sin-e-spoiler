@@ -1,4 +1,4 @@
-import MovieSearch from "../components/MovieSearch";
+import MovieSearch from '../components/MovieSearch';
 
 const Hero = ({ handleEvent }) => {
   return (

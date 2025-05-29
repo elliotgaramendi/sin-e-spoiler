@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const MovieSearch = ({ onSearch }) => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
 
   useEffect(() => {
     const handler = setTimeout(() => {

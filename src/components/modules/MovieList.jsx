@@ -1,4 +1,4 @@
-import MovieCard from "../components/MovieCard";
+import MovieCard from '../components/MovieCard';
 
 const MovieList = ({ id, title, movies, favorites = [], onToggleFavorite }) => {
   return (
@@ -14,7 +14,7 @@ const MovieList = ({ id, title, movies, favorites = [], onToggleFavorite }) => {
               <MovieCard
                 key={movie.id}
                 movie={movie}
-                isFavorite={favorites.some((fav) => fav.id === movie.id)}
+                isFavorite={favorites.some((favorite) => favorite.id === movie.id)}
                 onToggleFavorite={onToggleFavorite}
               />
             ))}
