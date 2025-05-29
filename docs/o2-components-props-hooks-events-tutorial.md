@@ -1,4 +1,4 @@
-### Step 11: Base CSS Enhancements I Form, Typography & Utilities 🎨⚙️
+### Step 11: Update Base CSS I Form, Typography & Utilities 🎨⚙️
 
 ---
 
@@ -133,7 +133,7 @@
 
 ---
 
-### Step 12: Reusable Button Component I Children & Variants 🧩🧱🎨
+### Step 12: Add Reusable Button Component I Children & Variants 🧩🧱🎨
 
 ---
 
@@ -160,21 +160,21 @@ src/components/widgets/Button.jsx
 
 ```jsx
 const variantClassMap = {
-  primary: "button--primary",
-  secondary: "button--secondary",
-  outline: "button--outline-primary",
+  primary: 'button--primary',
+  secondary: 'button--secondary',
+  outline: 'button--outline-primary',
 };
 
 const Button = ({
-  type = "button",
-  variant = "",
-  className = "",
+  type = 'button',
+  variant = '',
+  className = '',
   onClick,
   disabled = false,
   children,
   ...rest
 }) => {
-  const variantClass = variantClassMap[variant] || "";
+  const variantClass = variantClassMap[variant] || '';
   return (
     <button
       type={type}
@@ -203,14 +203,14 @@ export default Button;
 
 ---
 
-### Step 13: MovieCard Component I Toggle Favorite with Full Object ❤️🖤
+### Step 13: Update MovieCard Component I Toggle Favorite with Full Object ❤️🖤
 
 ---
 
 **📁 File Path**
 
 ```
-src/components/widgets/MovieCard.jsx
+src/components/components/MovieCard.jsx
 ```
 
 ---
@@ -229,8 +229,8 @@ src/components/widgets/MovieCard.jsx
 **🧩 Code**
 
 ```jsx
-import Button from "../widgets/Button";
-import Rating from "../widgets/Rating";
+import Button from '../widgets/Button';
+import Rating from '../widgets/Rating';
 
 const MovieCard = ({ movie, isFavorite, onToggleFavorite = () => { } }) => {
   const { title, rating, genre, duration, image, description, showTimes } = movie;
@@ -300,14 +300,14 @@ export default MovieCard;
 
 ---
 
-### Step 14: MovieSearch Component I Controlled Input with Debounce 🔍⌛
+### Step 14: Add MovieSearch Component I Controlled Input with Debounce 🔍⌛
 
 ---
 
 **📁 File Path**
 
 ```
-src/components/modules/MovieSearch.jsx
+src/components/components/MovieSearch.jsx
 ```
 
 ---
@@ -324,10 +324,10 @@ src/components/modules/MovieSearch.jsx
 **🧩 Code**
 
 ```jsx
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const MovieSearch = ({ onSearch }) => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState('');
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -365,7 +365,7 @@ export default MovieSearch;
 
 ---
 
-### Step 15: MovieList Component I Render Conditional with Empty State 🧩
+### Step 15: Update MovieList Component I Render Conditional with Empty State 🧩
 
 ---
 
@@ -389,7 +389,7 @@ src/components/modules/MovieList.jsx
 **🧩 Code**
 
 ```jsx
-import MovieCard from "../components/MovieCard";
+import MovieCard from '../components/MovieCard';
 
 const MovieList = ({ id, title, movies, favorites = [], onToggleFavorite }) => (
   <section className="section" id={id}>
@@ -404,7 +404,7 @@ const MovieList = ({ id, title, movies, favorites = [], onToggleFavorite }) => (
             <MovieCard
               key={movie.id}
               movie={movie}
-              isFavorite={favorites.some((fav) => fav.id === movie.id)}
+              isFavorite={favorites.some((favorite) => favorite.id === movie.id)}
               onToggleFavorite={onToggleFavorite}
             />
           ))}
@@ -427,7 +427,7 @@ export default MovieList;
 
 ---
 
-### Step 16: Hero Component I Search & Call to Action 🎬🔍
+### Step 16: Update Hero Component I Search & Call to Action 🎬🔍
 
 ---
 
@@ -441,18 +441,18 @@ src/components/modules/Hero.jsx
 
 **✅ Features**
 
-- Renders a prominent hero banner with title and description  
-- Includes two CTA buttons (“Browse Movies” and “Coming Soon”)  
-- Integrates `MovieSearch` to trigger `onSearch` via `handleEvent` prop  
-- Responsive flexbox layout for mobile-first design  
-- Uses semantic HTML (`<article>`, `<h1>`, `<p>`, `<a>`)  
+- Renders a prominent hero banner with title and description
+- Includes two CTA buttons (“Browse Movies” and “Coming Soon”)
+- Integrates `MovieSearch` to trigger `onSearch` via `handleEvent` prop
+- Responsive flexbox layout for mobile-first design
+- Uses semantic HTML (`<article>`, `<h1>`, `<p>`, `<a>`)
 
 ---
 
 **🧩 Code**
 
 ```jsx
-import MovieSearch from "../components/MovieSearch";
+import MovieSearch from '../components/MovieSearch';
 
 const Hero = ({ handleEvent }) => {
   return (
@@ -499,7 +499,7 @@ export default Hero;
 
 ---
 
-### Step 17: App Component I useState + LocalStorage + Search Integration ⚙️🧠💾
+### Step 17: Update App Component I useState + LocalStorage + Search Integration ⚙️🧠💾
 
 ---
 
@@ -524,14 +524,14 @@ src/App.jsx
 **🧩 Code**
 
 ```jsx
-import { useState } from "react";
-import Footer from "./components/layouts/Footer";
-import Header from "./components/layouts/Header";
-import Hero from "./components/modules/Hero";
-import MovieList from "./components/modules/MovieList";
-import { getMovies } from "./utils/movie.utils";
+import { useState } from 'react';
+import Footer from './components/layouts/Footer';
+import Header from './components/layouts/Header';
+import Hero from './components/modules/Hero';
+import MovieList from './components/modules/MovieList';
+import { getMovies } from './utils/movie.utils';
 
-const FAVORITE_KEY = "sin-e-favorites";
+const FAVORITE_KEY = 'sin-e-favorites';
 
 const App = () => {
   const [movies] = useState(getMovies());
@@ -544,9 +544,9 @@ const App = () => {
 
   const handleToggleFavorite = (movie) => {
     setFavorites((prev) => {
-      const exists = prev.some((fav) => fav.id === movie.id);
+      const exists = prev.some((favorite) => favorite.id === movie.id);
       const updated = exists
-        ? prev.filter((fav) => fav.id !== movie.id)
+        ? prev.filter((favorite) => favorite.id !== movie.id)
         : [...prev, movie];
       localStorage.setItem(FAVORITE_KEY, JSON.stringify(updated));
       return updated;

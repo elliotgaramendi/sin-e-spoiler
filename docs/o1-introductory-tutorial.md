@@ -23,17 +23,17 @@ _A professional guide to building a modern cinema web application using React 19
     - [CSS Modular Architecture](#css-modular-architecture)
     - [Safe Rendering with `safeString`](#safe-rendering-with-safestring)
   - [3. Implementation](#3-implementation)
-    - [Step 0: HTML Entry Setup I Base Structure](#step-0-html-entry-setup-i-base-structure)
-    - [Step 1: Base CSS Architecture I Complete System for “Sin E Spoiler”](#step-1-base-css-architecture-i-complete-system-for-sin-e-spoiler)
-    - [Step 2: Movie Data Structure I Realistic TMDB-based Records](#step-2-movie-data-structure-i-realistic-tmdb-based-records)
-    - [Step 3: Header Component I Sin E Spoiler](#step-3-header-component-i-sin-e-spoiler)
-    - [Step 4: Footer Component I Contact \& Info](#step-4-footer-component-i-contact--info)
-    - [Step 5: Hero Component I Highlight Banner](#step-5-hero-component-i-highlight-banner)
-    - [Step 6: Rating Component I Score](#step-6-rating-component-i-score)
-    - [Step 7: MovieCard Component I Card Display](#step-7-moviecard-component-i-card-display)
-    - [Step 8: MovieList Component I Grid Section](#step-8-movielist-component-i-grid-section)
-    - [Step 9: App Component I App Orchestrator](#step-9-app-component-i-app-orchestrator)
-    - [Step 10: Entry Point I App Bootstrap](#step-10-entry-point-i-app-bootstrap)
+    - [Step 0: Feat Base Structure I HTML Entry Setup](#step-0-feat-base-structure-i-html-entry-setup)
+    - [Step 1: Styles I Base CSS Architecture for “Sin E Spoiler”](#step-1-styles-i-base-css-architecture-for-sin-e-spoiler)
+    - [Step 2: Feat Data Structure I Movie Data Structure for “Sin E Spoiler”](#step-2-feat-data-structure-i-movie-data-structure-for-sin-e-spoiler)
+    - [Step 3: Add Header Component I Sin E Spoiler](#step-3-add-header-component-i-sin-e-spoiler)
+    - [Step 4: Add Footer Component I Contact \& Info](#step-4-add-footer-component-i-contact--info)
+    - [Step 5: Add Hero Component I Highlight Banner](#step-5-add-hero-component-i-highlight-banner)
+    - [Step 6: Add Rating Component I Score](#step-6-add-rating-component-i-score)
+    - [Step 7: Add MovieCard Component I Card Display](#step-7-add-moviecard-component-i-card-display)
+    - [Step 8: Add MovieList Component I Grid Section](#step-8-add-movielist-component-i-grid-section)
+    - [Step 9: Update App Component I App Orchestrator](#step-9-update-app-component-i-app-orchestrator)
+    - [Step 10: Update Entry Point I App Bootstrap](#step-10-update-entry-point-i-app-bootstrap)
   - [4. Running the Application](#4-running-the-application)
   - [5. Next Steps](#5-next-steps)
     - [Best Practices](#best-practices)
@@ -230,8 +230,8 @@ npm install
 🛡️ Prevent XSS and malformed content by sanitizing text:
 
 ```ts
-export const safeString = (str = "") =>
-  String(str).replace(/[<>]/g, "");
+export const safeString = (str = '') =>
+  String(str).replace(/[<>]/g, '');
 
 <p>{safeString(movie.description)}</p>
 ```
@@ -240,7 +240,7 @@ export const safeString = (str = "") =>
 
 ## 3. Implementation
 
-### Step 0: HTML Entry Setup I Base Structure
+### Step 0: Feat Base Structure I HTML Entry Setup
 
 This step prepares your Vite + React project with the essential HTML metadata and assets for a professional cinema experience. 🎬✨
 
@@ -298,7 +298,7 @@ index.html
 
 ---
 
-### Step 1: Base CSS Architecture I Complete System for “Sin E Spoiler”
+### Step 1: Styles I Base CSS Architecture for “Sin E Spoiler”
 
 This section contains the **entire CSS system** needed to support the "Sin E Spoiler" React cinema app. It follows your modular, responsive, and animation-rich style methodology with `@property`, keyframes, and scroll-driven interactions. Layered CSS system designed to be:
 - ✅ **Semantic** (HTML5)
@@ -1001,7 +1001,7 @@ This is the entry point for all your CSS modules. Import your styles in order:
 
 ---
 
-### Step 2: Movie Data Structure I Realistic TMDB-based Records
+### Step 2: Feat Data Structure I Movie Data Structure for “Sin E Spoiler”
 
 This step defines how to structure and use movie data in our app. We use real TMDB data, map it to our app format with a custom mapper, and expose utility functions for components to consume. 📊✨
 
@@ -1425,28 +1425,28 @@ export const tmdbNowPlayingMock = {
 **🧠 `src/utils/movie.utils.js`**
 
 ```javascript
-import { tmdbNowPlayingMock } from "../data/movies.data";
+import { tmdbNowPlayingMock } from '../data/movies.data';
 
-export const getImageUrl = (size = "w342", path) => {
-  if (!path) return "https://picsum.photos/342/513?random";
+export const getImageUrl = (size = 'w342', path) => {
+  if (!path) return 'https://picsum.photos/342/513?random';
   return `https://image.tmdb.org/t/p/${size}${path}`;
 };
 
 export const genres = {
-  12: "Adventure",
-  14: "Fantasy",
-  28: "Action",
-  35: "Comedy",
-  53: "Thriller",
-  80: "Crime",
-  878: "Sci-Fi",
-  10751: "Family",
-  10752: "War",
-  18: "Drama",
-  9648: "Mystery",
-  27: "Horror",
-  10749: "Romance",
-  37: "Western"
+  12: 'Adventure',
+  14: 'Fantasy',
+  28: 'Action',
+  35: 'Comedy',
+  53: 'Thriller',
+  80: 'Crime',
+  878: 'Sci-Fi',
+  10751: 'Family',
+  10752: 'War',
+  18: 'Drama',
+  9648: 'Mystery',
+  27: 'Horror',
+  10749: 'Romance',
+  37: 'Western'
 };
 
 export const mapTmdbToMovie = (tmdbMovie) => {
@@ -1454,11 +1454,11 @@ export const mapTmdbToMovie = (tmdbMovie) => {
     id: tmdbMovie.id,
     title: tmdbMovie.title,
     rating: Math.round(tmdbMovie.vote_average) / 2,
-    genre: tmdbMovie.genre_ids.map(id => genres[id] || "Drama")[0],
-    duration: "120 min",
-    image: getImageUrl("w342", tmdbMovie.poster_path),
+    genre: tmdbMovie.genre_ids.map(id => genres[id] || 'Drama')[0],
+    duration: '120 min',
+    image: getImageUrl('w342', tmdbMovie.poster_path),
     description: tmdbMovie.overview,
-    showTimes: ["2:30 PM", "5:45 PM", "9:00 PM", "11:30 PM"],
+    showTimes: ['2:30 PM', '5:45 PM', '9:00 PM', '11:30 PM'],
     releaseDate: tmdbMovie.release_date
   };
 };
@@ -1470,7 +1470,7 @@ export const getMovies = () => tmdbNowPlayingMock.results.map(mapTmdbToMovie);
 
 ---
 
-### Step 3: Header Component I Sin E Spoiler
+### Step 3: Add Header Component I Sin E Spoiler
 
 Build a responsive, stylish movie-themed header 🎥. Includes smooth navigation to Movies, Cinemas, AR Posters, and more! 🎞️🍿 Great for first impressions! 🚀
 
@@ -1548,7 +1548,7 @@ export default Header;
 
 ---
 
-### Step 4: Footer Component I Contact & Info
+### Step 4: Add Footer Component I Contact & Info
 
 Wrap up your app with a clean, informative footer ✨. Includes branding, quick links, contact info, and social media icons! 📬📍 A perfect ending! 👣
 
@@ -1638,7 +1638,7 @@ export default Footer;
 
 ---
 
-### Step 5: Hero Component I Highlight Banner
+### Step 5: Add Hero Component I Highlight Banner
 
 Make a cinematic entrance! 🌟 Display a bold title, a compelling description, and powerful CTAs to guide users into the experience 🎬🚪💡
 
@@ -1691,7 +1691,7 @@ export default Hero;
 
 ---
 
-### Step 6: Rating Component I Score
+### Step 6: Add Rating Component I Score
 
 Visualize AI-powered ratings with beautiful stars 🌠 – full, half, and empty. Show clean decimal values for sharp movie impressions! 📈🔍
 
@@ -1750,7 +1750,7 @@ export default Rating;
 
 ---
 
-### Step 7: MovieCard Component I Card Display
+### Step 7: Add MovieCard Component I Card Display
 
 Every movie deserves a spotlight 🎞️. This card shows title, poster, genre badge, rating, short description, and showtimes – all in one elegant frame 🍿🕓
 
@@ -1776,7 +1776,7 @@ src/components/components/MovieCard.jsx
 **🧩 Code**
 
 ```jsx
-import Rating from "../widgets/Rating";
+import Rating from '../widgets/Rating';
 
 const MovieCard = ({ movie }) => {
   const { title, rating, genre, duration, image, description, showTimes } = movie;
@@ -1831,7 +1831,7 @@ export default MovieCard;
 
 ---
 
-### Step 8: MovieList Component I Grid Section
+### Step 8: Add MovieList Component I Grid Section
 
 Display your movie collection in a responsive grid layout 🧩📽️. Dynamically renders each <MovieCard /> and keeps everything well-aligned 🎯🎞️
 
@@ -1856,7 +1856,7 @@ src/components/modules/MovieList.jsx
 **🧩 Code**
 
 ```jsx
-import MovieCard from "../components/MovieCard";
+import MovieCard from '../components/MovieCard';
 
 const MovieList = ({ movies }) => {
   return (
@@ -1886,9 +1886,9 @@ export default MovieList;
 
 ---
 
-### Step 9: App Component I App Orchestrator
+### Step 9: Update App Component I App Orchestrator
 
-The brain of your application 🧠. Composes the full layout with <Header />, <Hero />, <MovieList />, and <Footer /> in perfect order 🎬🛠️
+The brain of your application 🧠. Composes the full layout with `<Header />`, `<Hero />`, `<MovieList />` and `<Footer />` in perfect order 🎬🛠️ 
 
 ---
 
@@ -1911,11 +1911,11 @@ src/App.jsx
 **🧩 Code**
 
 ```jsx
-import Footer from "./components/layouts/Footer";
-import Header from "./components/layouts/Header";
-import Hero from "./components/modules/Hero";
-import MovieList from "./components/modules/MovieList";
-import { getMovies } from "./utils/movie.utils";
+import Footer from './components/layouts/Footer';
+import Header from './components/layouts/Header';
+import Hero from './components/modules/Hero';
+import MovieList from './components/modules/MovieList';
+import { getMovies } from './utils/movie.utils';
 
 function App() {
   const movies = getMovies();
@@ -1945,7 +1945,7 @@ export default App;
 
 ---
 
-### Step 10: Entry Point I App Bootstrap
+### Step 10: Update Entry Point I App Bootstrap
 
 The launchpad for your React app! 🎯 Uses createRoot with StrictMode, loads global styles, and mounts the app into #root. Ready for takeoff! 🛸💻
 

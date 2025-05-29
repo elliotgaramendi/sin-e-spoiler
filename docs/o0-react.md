@@ -63,14 +63,11 @@
 
 * 🪝 `useEffect` en lógica compartida (loading, timeout, scroll)
 * 🧠 Creación de custom hooks reutilizables (`useTheme`, `useDebounce`, `useLocalStorage`)
-* 🎨 Estilos con Tailwind CSS y CSS Modules
+* 🎨 Estilos con Tailwind CSS
 * 📚 Librerías esenciales para UI y productividad:
-
-  * 📡 Axios (API client)
   * 📋 React Hook Form (manejo y validación de formularios)
-  * 🎛️ classnames (utilidad condicional de clases)
   * 🖼️ react-icons (íconos populares)
-  * 🎠 keen-slider (sliders responsivos)
+  * 🎠 swiper (sliders responsivos)
   * 💬 react-toastify (notificaciones)
   * 🧩 react-loading-skeleton (placeholders visuales)
 
@@ -101,7 +98,7 @@
 
 * 🧭 React Router: rutas públicas, privadas y dinámicas (`/movies/:slug`)
 * 🌍 Zustand: creación de múltiples stores (usuario, carrito, tema)
-* 📡 TanStack Query: caching, retries, invalidaciones, paginación
+* 📡 Axios (API client) + TanStack Query: caching, retries, invalidaciones, paginación
 * 🧩 UI Framework: integración con Shadcn UI y Tailwind
 * 🦴 Skeletons loaders + fallback visuales con Suspense
 

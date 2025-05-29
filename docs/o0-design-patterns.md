@@ -173,44 +173,6 @@ logger.emit('log', 'Server started');
 
 ---
 
-### ✅ React (Frontend):
-
-```tsx
-// 🔍 adaptTmdbToMovie.js
-export const adaptTmdbToMovie = (tmdb) => ({
-  id: tmdb.id,
-  title: tmdb.title,
-  rating: Math.round(tmdb.vote_average) / 2,
-  genre: tmdb.genre_ids[0],
-  image: getImageUrl("w342", tmdb.poster_path),
-  description: tmdb.overview,
-  releaseDate: tmdb.release_date
-});
-```
-
----
-
-### ✅ Node.js (Backend):
-
-```js
-// 🔍 adapters/tmdbAdapter.js
-exports.adaptTmdbToMovie = (tmdb) => ({
-  id: tmdb.id,
-  title: tmdb.title,
-  rating: Math.round(tmdb.vote_average) / 2,
-  genre: tmdb.genre_ids[0],
-  image: getImageUrl("w342", tmdb.poster_path),
-  description: tmdb.overview,
-  releaseDate: tmdb.release_date
-});
-```
-
----
-
-...\[content truncated for brevity]...
-
----
-
 ## 5. 🏛️ Command Pattern
 
 ### 📍 *Frontend: Encapsulated Actions / Undo Logic*
