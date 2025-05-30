@@ -277,6 +277,11 @@ index.html
   <meta name="theme-color" content="#23B5E8" />
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body class="body">
@@ -1449,7 +1454,7 @@ export const genres = {
   37: 'Western'
 };
 
-export const mapTmdbToMovie = (tmdbMovie) => {
+export const adaptTmdbToMovie = (tmdbMovie) => {
   return {
     id: tmdbMovie.id,
     title: tmdbMovie.title,
@@ -1463,7 +1468,7 @@ export const mapTmdbToMovie = (tmdbMovie) => {
   };
 };
 
-export const getMovies = () => tmdbNowPlayingMock.results.map(mapTmdbToMovie);
+export const getMovies = () => tmdbNowPlayingMock.results.map(adaptTmdbToMovie);
 ```
 
 ✅ With this setup, your app is now equipped with realistic data and utility helpers to simulate a real-world movie listing platform. 🧠📊
