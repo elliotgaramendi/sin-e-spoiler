@@ -1048,7 +1048,7 @@ src/ 📂
 ├── data/
 │   └── movies.data.js 🎞️  # Raw TMDB movie data
 └── utils/
-    └── movie.utils.js 🧠  # Mapping and image utilities
+    └── movie.util.js 🧠  # Mapping and image utilities
 ```
 ---
 
@@ -1455,7 +1455,7 @@ export const tmdbNowPlayingMock = {
 
 ---
 
-**🧠 `src/utils/movie.utils.js`**
+**🧠 `src/utils/movie.util.js`**
 
 ```javascript
 import { tmdbNowPlayingMock } from '../data/movies.data';
@@ -1950,7 +1950,7 @@ import Footer from './components/layouts/Footer';
 import Header from './components/layouts/Header';
 import Hero from './components/modules/Hero';
 import MovieList from './components/modules/MovieList';
-import { getMovies } from './utils/movie.utils';
+import { getMovies } from './utils/movie.util';
 
 function App() {
   const movies = getMovies();

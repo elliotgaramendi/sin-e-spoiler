@@ -1,24 +1,22 @@
 import { useEffect, useState } from 'react';
+import useDebounce from '../../hooks/useDebounce';
 
 const MovieSearch = ({ onSearch }) => {
-  const [input, setInput] = useState('');
+  const [query, setQuery] = useState('');
+  const debouncedQuery = useDebounce(query, 500);
 
   useEffect(() => {
-    const handler = setTimeout(() => {
-      onSearch(input.trim());
-    }, 500);
-
-    return () => clearTimeout(handler);
-  }, [input, onSearch]);
+    onSearch(debouncedQuery.trim());
+  }, [debouncedQuery, onSearch]);
 
   return (
     <form className="form" aria-label="Movie search">
       <input
         type="search"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Search movies..."
-        className="form__input interactive interactive--xl t-align-center"
+        value={query}
+        onChange={e => setQuery(e.target.value)}
+        placeholder="🔍 Search movies..."
+        className="form__input interactive"
         aria-label="Search movies"
       />
     </form>

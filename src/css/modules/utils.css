@@ -22,12 +22,20 @@
   display: flex;
 }
 
+.f-wrap-wrap {
+  flex-wrap: wrap;
+}
+
 .f-direction-column {
   flex-direction: column;
 }
 
 .a-items-center {
   align-items: center;
+}
+
+.a-items-end {
+  align-items: flex-end;
 }
 
 .j-content-start {

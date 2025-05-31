@@ -1,28 +1,56 @@
-import MovieSearch from '../components/MovieSearch';
+import { A11y, Autoplay, EffectCoverflow, Keyboard, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-const Hero = ({ handleEvent }) => {
+const Hero = ({ data }) => {
   return (
-    <article className="hero">
-      <div className="container d-flex f-direction-column a-items-center g-8">
-        <h1 className="hero__title t-align-center">
-          Explore spoiler-free cinema with <span className="c-primary">AI reviews</span>
-        </h1>
-        <div className="d-flex f-direction-column a-items-center g-4">
-          <p className="hero__paragraph t-align-center">
-            Your movie app with advanced features, premieres, and interactive AR experiences.
-          </p>
-          <div className="flexbox flexbox--responsive g-4">
-            <a href="#now-showing" className="button button--primary interactive interactive--xl">
-              🎬 Browse Movies
-            </a>
-            <a className="button button--outline-primary interactive interactive--xl">
-              🍃 Coming Soon
-            </a>
-          </div>
-        </div>
-        <MovieSearch onSearch={handleEvent} />
-      </div>
-    </article>
+    <Swiper
+      a11y={{ prevSlideMessage: 'Previous slide of hero', nextSlideMessage: 'Next slide of hero' }}
+      aria-label="Hero slider"
+      autoplay={{ delay: 5000, pauseOnMouseEnter: true }}
+      breakpoints={{ 768: { spaceBetween: 32 } }}
+      className="swiper--custom"
+      coverflowEffect={{ rotate: 87.5 }}
+      effect={'coverflow'}
+      keyboard={{ enabled: true }}
+      loop
+      modules={[A11y, Autoplay, EffectCoverflow, Keyboard, Navigation, Pagination]}
+      navigation
+      pagination={{ clickable: true }}
+      spaceBetween={28}
+      speed={500}
+      tag='section'
+    >
+      {
+        data.map(element => {
+          const { id, title, description, backdrop } = element;
+          return (
+            <SwiperSlide key={id}>
+              <article className="hero">
+                <img src={backdrop} alt={title} width="1024" height="576" loading="lazy" className="img img--background" />
+                <div className="container d-flex a-items-end j-content-start">
+                  <div className="d-flex f-direction-column g-8">
+                    <div>
+                      <h2 className="hero__title">{title}</h2>
+                      <p className="hero__paragraph">
+                        {description.slice(0, 64)}...
+                      </p>
+                    </div>
+                    <div className="d-flex f-wrap-wrap g-4">
+                      <a href="#now-showing" className="button button--primary interactive interactive--xl">
+                        🎬 Book Now
+                      </a>
+                      <a className="button button--outline-primary interactive interactive--xl">
+                        📽️ Watch Trailer
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </SwiperSlide>
+          )
+        })
+      }
+    </Swiper>
   );
 };
 

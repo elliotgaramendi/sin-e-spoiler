@@ -55,38 +55,38 @@
 
 ---
 
-### 🔹 Semana 11: Custom Hooks, Librerías Esenciales y UI 🪝📚🎨🧠
+### 🔹 Semana 11: Custom Hooks, Librerías básicas y UI 🪝📚🎨🧠
 
 **Tema principal:** Modularidad, lógica compartida y sistema visual escalable
 
 #### 🧩 Temas:
 
-* 🪝 `useEffect` en lógica compartida (loading, timeout, scroll)
-* 🧠 Creación de custom hooks reutilizables (`useTheme`, `useDebounce`, `useLocalStorage`)
-* 🎨 Estilos con Tailwind CSS
-* 📚 Librerías esenciales para UI y productividad:
-  * 📋 React Hook Form (manejo y validación de formularios)
-  * 🖼️ react-icons (íconos populares)
-  * 🎠 swiper (sliders responsivos)
-  * 💬 react-toastify (notificaciones)
-  * 🧩 react-loading-skeleton (placeholders visuales)
+* 🪝 `useEffect` en lógica compartida (loading, timeout, resize)
+* 🧠 Creación de custom hooks reutilizables (`usePremieres`, `useWindowSize`, `useDebounce`)
+* 🎨 Estilos con CSS modular (variables, utilidades, componentes)
+* 📚 Librerías básicas para UI y productividad:
+
+  * 🎠 **swiper** (sliders responsivos)
+  * 💬 **react-toastify** (notificaciones)
+  * ⏳ **react-loading-skeleton** (placeholders visuales)
+  * 🖼️ **@fontsource-variable/open-sans** & **@fontsource-variable/roboto** (fuentes variables)
 
 #### 🌐 Temas transversales:
 
 * 📐 **Design Patterns:** separación de lógica en hooks para mayor escalabilidad
-* ♿ **Accesibilidad:** formularios accesibles y retroalimentación clara
-* 🎯 **Buenas prácticas:** creación de hooks genéricos y desacoplados
-* 🛡️ **Seguridad:** validación de datos, control de inputs, prevención de mal uso de efectos
-* 🧠 **Arquitectura:** archivos organizados por propósito (hooks, styles, lib)
+* ♿ **Accesibilidad:** sliders con ARIA, inputs accesibles y mensajes claros
+* 🎯 **Buenas prácticas:** creación de hooks genéricos y desacoplados; nombres autoexplicativos
+* 🛡️ **Seguridad:** validación mínima de datos, prevención de efectos mal usados
+* 🧠 **Arquitectura:** archivos organizados por propósito (hooks, styles, utils, components)
 
 #### 🔧 Reto:
 
 * Desarrollar una sección de “Estrenos” con:
 
-  * Custom hook `usePremieres` con fetch y control de loading
-  * Slider visual accesible con foco por teclado
-  * Estilo adaptable con Tailwind + módulos
-  * Toast al seleccionar favorito + validación en formulario simple
+  * Custom hook `usePremieres` con fetch simulado y control de loading/error
+  * Slider visual accesible con foco por teclado (`Hero` y `PremieresSlider`)
+  * Estilo modular con CSS personalizado + variables de fuente variable
+  * Toast al seleccionar favorito + validación simple en formulario de búsqueda
 
 ---
 

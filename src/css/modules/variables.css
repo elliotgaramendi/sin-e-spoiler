@@ -15,8 +15,8 @@
   --max-width: 1280px;
   --transition-duration: 0.25s;
 
-  --primary-font: "Roboto", sans-serif;
-  --secondary-font: "Open Sans", sans-serif;
+  --primary-font: 'Roboto Variable', sans-serif;
+  --secondary-font: 'Open Sans Variable', sans-serif;
 
   --primary-background: var(--black-color);
   --secondary-background: var(--neutral-950);

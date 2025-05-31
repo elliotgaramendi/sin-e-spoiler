@@ -19,6 +19,27 @@
   font-size: calc(var(--size) * 5);
 }
 
+.subtitle {
+  margin: 0;
+  font-weight: 700;
+  font-size: calc(var(--size) * 6);
+  font-family: var(--secondary-font);
+}
+
+.subtitle--sm {
+  font-size: calc(var(--size) * 5.5);
+}
+
+.subtitle--xs {
+  font-weight: 600;
+  font-size: calc(var(--size) * 5);
+}
+
+.subtitle--2xs {
+  font-weight: 600;
+  font-size: calc(var(--size) * 4.5);
+}
+
 .text {
   margin: 0;
   font-weight: 400;
@@ -75,7 +96,7 @@
 }
 
 .img--logo {
-  height: calc(var(--size) * 9);
+  height: calc(var(--size) * 8);
   width: auto;
 }
 
@@ -86,6 +107,12 @@
   height: 100%;
   inset: 0;
   opacity: 0.5;
+}
+
+.img--poster {
+  width: 100%;
+  height: calc(var(--size) * 90);
+  border-radius: var(--border-radius);
 }
 
 .link {

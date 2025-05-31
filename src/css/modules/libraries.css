@@ -1,0 +1,12 @@
+.swiper--custom {
+  --swiper-navigation-color: var(--primary-color);
+  --swiper-navigation-size: calc(var(--size) * 8);
+  --swiper-navigation-sides-offset: calc(var(--size) * 2);
+  --swiper-pagination-color: var(--primary-color);
+  --swiper-pagination-bottom: calc(var(--size) * 1.25);
+  --swiper-pagination-bullet-size: calc(var(--size) * 2.25);
+  --swiper-pagination-bullet-opacity: 0.875;
+  --swiper-pagination-bullet-inactive-color: var(--primary-color);
+  --swiper-pagination-bullet-inactive-opacity: 0.25;
+  width: 100%;
+}

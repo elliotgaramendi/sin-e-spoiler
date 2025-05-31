@@ -1,17 +1,20 @@
+import notifyFavorite from '../../utils/notifyFavorite.util';
 import Button from '../elements/Button';
 import Rating from '../widgets/Rating';
 
 const MovieCard = ({ movie, isFavorite, onToggleFavorite = () => { } }) => {
-  const { title, rating, genre, duration, image, description, showTimes } = movie;
+  const { title, rating, genre, duration, poster, description, showTimes } = movie;
 
   return (
     <article className="card d-flex f-direction-column">
       <div className="p-relative">
         <img
-          src={image}
+          src={poster}
           alt={`${title} poster`}
-          className="card__image"
+          width="180"
+          height="320"
           loading="lazy"
+          className="card__image"
         />
         <span className="badge badge--primary interactive p-absolute t-2 l-2 f-weight-700">
           {genre}
@@ -19,8 +22,11 @@ const MovieCard = ({ movie, isFavorite, onToggleFavorite = () => { } }) => {
         <Button
           variant="secondary"
           className="interactive p-absolute t-2 r-2"
-          onClick={() => onToggleFavorite(movie)}
-          aria-label={isFavorite ? `Remove ${title} from favorites` : `Add ${title} to favorites`}
+          onClick={() => {
+            onToggleFavorite(movie);
+            notifyFavorite(movie.title, !isFavorite);
+          }}
+          aria-label={isFavorite ? `Remove ${movie.title}` : `Add ${movie.title}`}
         >
           {isFavorite ? "❤️" : "🤍"}
         </Button>
@@ -31,9 +37,9 @@ const MovieCard = ({ movie, isFavorite, onToggleFavorite = () => { } }) => {
           <Rating value={rating} />
           <span className="interactive c-secondary">{duration}</span>
         </div>
-        <p className="text text--sm c-shadow">{description.slice(0, 256)}...</p>
+        <p className="text text--sm c-shadow">{description.slice(0, 128)}...</p>
         <div className="d-flex f-direction-column g-2 m-top-auto">
-          <h4 className="interactive interactive--lg c-primary">Today's Showtimes</h4>
+          <h4 className="subtitle subtitle--2xs c-primary">Today's Showtimes</h4>
           <div className="d-flex f-wrap g-2">
             {showTimes.map((time, index) => (
               <a

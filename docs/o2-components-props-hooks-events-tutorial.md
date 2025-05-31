@@ -402,11 +402,11 @@ const MovieList = ({ id, title, movies, favorites = [], onToggleFavorite }) => (
         <p className="text text--lg t-align-center">No movies found 😞</p>
       ) : (
         <div className="g-layout g-layout--auto-fit-columns g-8">
-          {movies.map((movie) => (
+          {movies.map(movie => (
             <MovieCard
               key={movie.id}
               movie={movie}
-              isFavorite={favorites.some((favorite) => favorite.id === movie.id)}
+              isFavorite={favorites.some(favorite => favorite.id === movie.id)} 
               onToggleFavorite={onToggleFavorite}
             />
           ))}
@@ -531,7 +531,7 @@ import Footer from './components/layouts/Footer';
 import Header from './components/layouts/Header';
 import Hero from './components/modules/Hero';
 import MovieList from './components/modules/MovieList';
-import { getMovies } from './utils/movie.utils';
+import { getMovies } from './utils/movie.util';
 
 const FAVORITE_KEY = 'sin-e-favorites';
 
@@ -545,17 +545,17 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleToggleFavorite = (movie) => {
-    setFavorites((prev) => {
-      const exists = prev.some((favorite) => favorite.id === movie.id);
+    setFavorites(prev => {
+      const exists = prev.some(favorite => favorite.id === movie.id);
       const updated = exists
-        ? prev.filter((favorite) => favorite.id !== movie.id)
+        ? prev.filter(favorite => favorite.id !== movie.id)
         : [...prev, movie];
       localStorage.setItem(FAVORITE_KEY, JSON.stringify(updated));
       return updated;
     });
   };
 
-  const filteredMovies = movies.filter((movie) =>
+  const filteredMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
