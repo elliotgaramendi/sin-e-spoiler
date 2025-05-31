@@ -6,7 +6,7 @@ const Footer = () => {
       <nav className="nav">
         <div className="container g-layout g-layout--auto-fit-columns g-10">
           <div className="d-flex f-direction-column g-2">
-            <a href="#"><img src="/logo.svg" alt="Sin E Spoiler Logo" className="img img--logo" /></a>
+            <a href="#"><img src="/logo.svg" alt="Sin E Spoiler Logo" width="32" height="32" className="img img--logo" /></a>
             <h2 className="interactive interactive--lg c-primary">Sin E Spoiler</h2>
             <p className="text text--xs c-secondary-text">
               Your trusted source for spoiler-free movie experiences. AI-powered reviews that preserve the magic of cinema.

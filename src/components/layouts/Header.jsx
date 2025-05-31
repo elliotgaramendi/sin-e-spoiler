@@ -5,7 +5,7 @@ const Header = () => {
         <div className="container d-flex a-items-center g-4">
           <div className="f-1 d-flex j-content-start">
             <a href="#" className="link d-flex a-items-center g-2">
-              <img src="/logo.svg" alt="Sin E Spoiler" width="32" height="32" />
+              <img src="/logo.svg" alt="Sin E Spoiler Logo" width="32" height="32" className="img img--logo" />
               <h2 className="interactive interactive--lg c-primary">Sin E Spoiler</h2>
             </a>
           </div>
@@ -25,7 +25,7 @@ const Header = () => {
             </div>
           </div>
           <div className="f-1 d-flex a-items-center j-content-end g-2">
-            <a href="#signin" className="button button--primary interactive">💕 Sign In</a>
+            <a href="#signin" className="button button--primary interactive interactive--sm">💕 Sign In</a>
             <a href="#menu" className="link interactive interactive--2xl md:d-none">
               📚
             </a>

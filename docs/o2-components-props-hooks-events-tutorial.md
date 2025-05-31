@@ -241,8 +241,10 @@ const MovieCard = ({ movie, isFavorite, onToggleFavorite = () => { } }) => {
         <img
           src={image}
           alt={`${title} poster`}
-          className="card__image"
+          width="180"
+          height="320"
           loading="lazy"
+          className="card__image"
         />
         <span className="badge badge--primary interactive p-absolute t-2 l-2 f-weight-700">
           {genre}

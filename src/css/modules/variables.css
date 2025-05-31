@@ -1,7 +1,5 @@
 :root {
-  color-scheme: dark;
-  scroll-behavior: smooth;
-
+  --color-scheme: dark;
   --primary-color: #23B5E8;
   --secondary-color: #234B96;
   --warning-color: #E8B523;
@@ -17,8 +15,8 @@
   --max-width: 1280px;
   --transition-duration: 0.25s;
 
-  --primary-font: "Open Sans", sans-serif;
-  --secondary-font: "Roboto", sans-serif;
+  --primary-font: "Roboto", sans-serif;
+  --secondary-font: "Open Sans", sans-serif;
 
   --primary-background: var(--black-color);
   --secondary-background: var(--neutral-950);

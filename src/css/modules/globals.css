@@ -1,3 +1,11 @@
+:root {
+  color-scheme: var(--color-scheme);
+  accent-color: var(--primary-color);
+  scroll-behavior: smooth;
+  scrollbar-color: var(--primary-color) var(--primary-background);
+  scrollbar-width: thin;
+}
+
 .body {
   margin: 0;
   font-family: var(--primary-font);

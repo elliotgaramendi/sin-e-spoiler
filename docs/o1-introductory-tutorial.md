@@ -359,9 +359,7 @@ Centralized design tokens for consistent theming and spacing:
 
 ```css
 :root {
-  color-scheme: dark;
-  scroll-behavior: smooth;
-
+  --color-scheme: dark;
   --primary-color: #23B5E8;
   --secondary-color: #234B96;
   --warning-color: #E8B523;
@@ -377,8 +375,8 @@ Centralized design tokens for consistent theming and spacing:
   --max-width: 1280px;
   --transition-duration: 0.25s;
 
-  --primary-font: "Open Sans", sans-serif;
-  --secondary-font: "Roboto", sans-serif;
+  --primary-font: "Roboto", sans-serif;
+  --secondary-font: "Open Sans", sans-serif;
 
   --primary-background: var(--black-color);
   --secondary-background: var(--neutral-950);
@@ -430,6 +428,14 @@ Animation for scroll-based length and color transitions:
 Global document-level rules:
 
 ```css
+:root {
+  color-scheme: var(--color-scheme);
+  accent-color: var(--primary-color);
+  scroll-behavior: smooth;
+  scrollbar-color: var(--primary-color) var(--primary-background);
+  scrollbar-width: thin;
+}
+
 .body {
   margin: 0;
   font-family: var(--primary-font);
@@ -625,6 +631,7 @@ Utility classes for flexible layout systems:
 
 .hero__title {
   margin: 0;
+  font-weight: 800;
   font-size: clamp(2rem, 5vw, 4rem);
 }
 
@@ -720,6 +727,27 @@ Utility classes for flexible layout systems:
   font-size: calc(var(--size) * 5);
 }
 
+.subtitle {
+  margin: 0;
+  font-weight: 700;
+  font-size: calc(var(--size) * 6);
+  font-family: var(--secondary-font);
+}
+
+.subtitle--sm {
+  font-size: calc(var(--size) * 5.5);
+}
+
+.subtitle--xs {
+  font-weight: 600;
+  font-size: calc(var(--size) * 5);
+}
+
+.subtitle--2xs {
+  font-weight: 600;
+  font-size: calc(var(--size) * 4.5);
+}
+
 .text {
   margin: 0;
   font-weight: 400;
@@ -772,7 +800,7 @@ Utility classes for flexible layout systems:
 }
 
 .img--logo {
-  height: calc(var(--size) * 9);
+  height: calc(var(--size) * 8);
   width: auto;
 }
 
@@ -1509,7 +1537,7 @@ const Header = () => {
         <div className="container d-flex a-items-center g-4">
           <div className="f-1 d-flex j-content-start">
             <a href="#" className="link d-flex a-items-center g-2">
-              <img src="/logo.svg" alt="Sin E Spoiler" width="32" height="32" />
+              <img src="/logo.svg" alt="Sin E Spoiler Logo" width="32" height="32" className="img img--logo" />
               <h2 className="interactive interactive--lg c-primary">Sin E Spoiler</h2>
             </a>
           </div>
@@ -1520,7 +1548,7 @@ const Header = () => {
             ></a>
             <div className="off-canvas__child">
               <ul className="list f-2 list flexbox flexbox--center flexbox--responsive g-8">
-                <li><a href="#movies" className="link interactive">Movies</a></li>
+                <li><a href="#now-showing" className="link interactive">Movies</a></li>
                 <li><a href="#cinemas" className="link interactive">Cinemas</a></li>
                 <li><a href="#promotions" className="link interactive">Promotions</a></li>
                 <li><a href="#tickets" className="link interactive">My Tickets</a></li>
@@ -1529,7 +1557,7 @@ const Header = () => {
             </div>
           </div>
           <div className="f-1 d-flex a-items-center j-content-end g-2">
-            <a href="#signin" className="button button--primary interactive">💕 Sign In</a>
+            <a href="#signin" className="button button--primary interactive interactive--sm">💕 Sign In</a>
             <a href="#menu" className="link interactive interactive--2xl md:d-none">
               📚
             </a>
@@ -1586,7 +1614,7 @@ const Footer = () => {
       <nav className="nav">
         <div className="container g-layout g-layout--auto-fit-columns g-10">
           <div className="d-flex f-direction-column g-2">
-            <a href="#"><img src="/logo.svg" alt="Sin E Spoiler Logo" className="img img--logo" /></a>
+            <a href="#"><img src="/logo.svg" alt="Sin E Spoiler Logo" width="32" height="32" className="img img--logo" /></a>
             <h2 className="interactive interactive--lg c-primary">Sin E Spoiler</h2>
             <p className="text text--xs c-secondary-text">
               Your trusted source for spoiler-free movie experiences. AI-powered reviews that preserve the magic of cinema.
@@ -1792,8 +1820,10 @@ const MovieCard = ({ movie }) => {
         <img
           src={image}
           alt={`${title} poster`}
-          className="card__image"
+          width="180"
+          height="320"
           loading="lazy"
+          className="card__image"
         />
         <span className="badge badge--primary interactive p-absolute t-2 r-2 f-weight-700">{genre}</span>
       </div>
@@ -1803,9 +1833,9 @@ const MovieCard = ({ movie }) => {
           <Rating value={rating} />
           <span className="interactive c-secondary">{duration}</span>
         </div>
-        <p className="text text--sm c-shadow">{description.slice(0, 256)}...</p>
+        <p className="text text--sm c-shadow">{description.slice(0, 128)}...</p>
         <div className="d-flex f-direction-column g-2 m-top-auto">
-          <h4 className="interactive interactive--lg c-primary">Today's Showtimes</h4>
+          <h4 className="subtitle subtitle--2xs c-primary">Today's Showtimes</h4>
           <div className="d-flex f-wrap g-2">
             {showTimes.map((time, index) => (
               <a
@@ -1865,7 +1895,7 @@ import MovieCard from '../components/MovieCard';
 
 const MovieList = ({ movies }) => {
   return (
-    <section id="movies" className="section">
+    <section id="now-showing" className="section">
       <div className="container d-flex f-direction-column g-8">
         <h2 className="title c-primary t-align-center">Now Showing</h2>
         <div className="g-layout g-layout--auto-fit-columns g-8">
@@ -2094,7 +2124,7 @@ const GenreFilter = ({ genres, activeGenre, onGenreChange }) => (
 const FeaturedMovie = ({ movie }) => (
   <div className="featured-movie">
     <div className="featured-movie__backdrop">
-      <img src={getImageUrl(movie.backdrop_path, 'w1280')} alt={movie.title} className="img img--background" />
+      <img src={getImageUrl(movie.backdrop_path, 'w1280')} alt={movie.title} width="1024" height="576" className="img img--background" />
     </div>
     <div className="featured-movie__content container">
       <h2 className="title">{movie.title}</h2>
@@ -2131,7 +2161,7 @@ const PromoBanner = ({ promo }) => (
       <p className="text--sm">{promo.description}</p>
       <span className="badge badge--primary">{promo.code}</span>
     </div>
-    <img src={promo.image} alt={promo.title} className="promo-banner__image" />
+    <img src={promo.image} alt={promo.title} width="180" height="320"className="promo-banner__image"  />
   </div>
 );
 ```
@@ -2146,7 +2176,7 @@ const ComingSoon = ({ upcomingMovies }) => (
       <div className="g-layout g-layout--auto-fit-columns">
         {upcomingMovies.map(movie => (
           <div key={movie.id} className="coming-soon__item">
-            <img src={movie.image} alt={movie.title} className="coming-soon__image" />
+            <img src={movie.image} alt={movie.title} width="180" height="320" className="coming-soon__image" />
             <h3 className="title--xs">{movie.title}</h3>
             <p className="text--sm">Release: {new Date(movie.releaseDate).toLocaleDateString()}</p>
           </div>
