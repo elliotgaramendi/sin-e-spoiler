@@ -55,7 +55,7 @@
 
 ---
 
-### 🔹 Semana 11: Custom Hooks, Librerías básicas y UI 🪝📚🎨🧠
+### 🔹 Semana 11: Custom Hooks, Librerías básicas de UI 🪝📚🎨🧠
 
 **Tema principal:** Modularidad, lógica compartida y sistema visual escalable
 

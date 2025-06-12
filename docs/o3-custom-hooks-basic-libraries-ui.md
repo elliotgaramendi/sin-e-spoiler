@@ -1,7 +1,5 @@
 ### Step 18: Install Variable Fonts & Update CSS Styles I Enhanced Themes & Utilities 🎨💅
 
----
-
 **🔧 Installation**
 
 ```bash
@@ -34,7 +32,7 @@ npm install @fontsource-variable/open-sans @fontsource-variable/roboto
 ---
 
 <details>
-<summary><code>src/css/index.css</code></summary>
+<summary>🎨 <code>src/css/index.css</code></summary>
 
 ```css
 /* … existing @import rules … */
@@ -248,7 +246,7 @@ export const mapTmdbToMovie = tmdbMovie => {
     genre: genres[genre_ids[0]] || '🎞️',
     poster: getImageUrl('w342', poster_path),
     backdrop: getImageUrl('w1280', backdrop_path),
-    showTimes: ['2:30 PM', '5:45 PM', '9:00 PM', '11:30 PM'],
+    showTimes: ['2:30 PM', '5:45 PM', '9:00 PM', '11:30 PM']
   };
 };
 
@@ -329,7 +327,7 @@ export default notifyFavorite;
 
 ---
 
-### Step 20: Update `MovieCard.jsx` I Favorite Button & Toast Integration ❤️🔔
+### Step 21: Update `MovieCard.jsx` I Favorite Button & Toast Integration ❤️🔔
 
 **📁 File Path**
 
@@ -428,7 +426,7 @@ export default MovieCard;
 
 ---
 
-### Step 21: Implement `Hero` Component I Swiper-Powered Slider 🎬🌀
+### Step 22: Implement `Hero` Component I Swiper-Powered Slider 🎬🌀
 
 **🔧 Installation**
 
@@ -439,7 +437,7 @@ npm install swiper
 **📁 File Path**
 
 ```
-D:\develop\sin-e-spoiler-bk\src\components\modules\Hero.jsx
+src/components/modules/Hero.jsx
 ```
 
 **✅ Features**
@@ -530,12 +528,12 @@ export default Hero;
 
 ---
 
-### Step 22: Create `usePremieres` Hook I Simulated TMDB Fetch 🪝🎥
+### Step 23: Create `usePremieres` Hook I Simulated TMDB Fetch 🪝🎥
 
 **📁 File Path**
 
 ```
-D:\develop\sin-e-spoiler-bk\src\hooks\usePremieres.js
+src/hooks/usePremieres.js
 ```
 
 **✅ Features**
@@ -600,12 +598,12 @@ export default usePremieres;
 
 ---
 
-### Step 23: Create `useWindowSize` Hook I Window Width Detection 🌐📏
+### Step 24: Create `useWindowSize` Hook I Window Width Detection 🌐📏
 
 **📁 File Path**
 
 ```
-D:\develop\sin-e-spoiler-bk\src\hooks\useWindowSize.js
+src/hooks/useWindowSize.js
 ```
 
 **✅ Features**
@@ -663,7 +661,7 @@ export default useWindowSize;
 
 ---
 
-### Step 24: Create `LoadingSkeleton` Component I Visual Placeholder ⏳✨
+### Step 25: Create `LoadingSkeleton` Component I Visual Placeholder ⏳✨
 
 **🔧 Installation**
 
@@ -728,7 +726,7 @@ export default LoadingSkeleton;
 
 ---
 
-### Step 25: Create `PremieresSlider` Component I Carousel of Posters 🎞️🎠
+### Step 26: Create `PremieresSlider` Component I Carousel of Posters 🎞️🎠
 
 **📁 File Path**
 
@@ -803,7 +801,7 @@ export default PremieresSlider;
 
 ---
 
-### Step 26: Create `PremieresSection` Component I Hook Integration & Fallbacks 🪝🔄
+### Step 27: Create `PremieresSection` Component I Hook Integration & Fallbacks 🪝🔄
 
 **📁 File Path**
 
@@ -878,21 +876,35 @@ export default PremieresSection;
 
 ---
 
-### Step 27: Create `useDebounce` Hook I Controlled Value Delay ⏱️🖋️
+### Step 28: Debounced Hook ⏳ & Search Component 🔍
 
-**📁 File Path**
+**📁 File Paths**
 
-```
-src/hooks/useDebounce.js
-```
+* **⏳ `src/hooks/useDebounce.js`**
+* **🔍 `src/components/components/MovieSearch.jsx`**
+
+---
 
 **✅ Features**
 
-* Returns a debounced version of any `inputValue` after a configurable `delayMs`
-* Cancels pending timeout when `inputValue` or `delayMs` change
-* Ideal for throttling rapid input or resize events in forms or data-fetching
+* **`useDebounce` Hook**
+
+  * Returns a debounced version of any `inputValue` after a configurable `delayMs`.
+  * Cancels pending timeouts when `inputValue` or `delayMs` change.
+  * Ideal for throttling rapid updates (e.g., keystrokes in a search field).
+
+* **`MovieSearch` Component**
+
+  * Uses `useDebounce` (500 ms) to delay calls to `onSearch` until typing has paused.
+  * Controlled `<input type="search">` with internal `query` state.
+  * Trims whitespace and invokes `onSearch(debouncedQuery)` whenever the debounced value changes.
+  * Accessible markup: clear placeholder with search icon and `aria-label`.
+
+---
 
 **🧩 Code**
+
+**⏳ `src/hooks/useDebounce.js`**
 
 ```js
 import { useEffect, useState } from 'react';
@@ -901,8 +913,11 @@ const useDebounce = (inputValue, delayMs = 300) => {
   const [debouncedValue, setDebouncedValue] = useState(inputValue);
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => setDebouncedValue(inputValue), delayMs);
-    return () => clearTimeout(timeoutId);
+    const handler = setTimeout(() => {
+      setDebouncedValue(inputValue);
+    }, delayMs);
+
+    return () => clearTimeout(handler);
   }, [inputValue, delayMs]);
 
   return debouncedValue;
@@ -911,40 +926,9 @@ const useDebounce = (inputValue, delayMs = 300) => {
 export default useDebounce;
 ```
 
-**🧠 UX Guidelines**
-
-* Prevent rapid-fire updates by batching frequent changes (e.g., typing in search)
-* Use a shorter `delayMs` for more responsive inputs, longer for expensive operations
-* Optionally display a loading indicator while the value is debouncing
-* Ensure input placeholder stays visible during debounce to guide users
-* Avoid confusing flicker by only triggering on stable input
-
-**⚙️ Ensure Clean, Robust Code**
-
-* **Strategy Pattern:** Encapsulates timing logic to reuse across components
-* **Single Responsibility:** Hook only manages debounced state logic
-* **Open/Closed:** Works with any primitive or object value without modification
-* **DRY Principle:** Centralizes debounce behavior so it isn’t reimplemented
-* **Performance:** Clears previous timeout to avoid stale updates
-
 ---
 
-### Step 28: Update `MovieSearch` Component I Debounced Search Input 🔍⌛
-
-**📁 File Path**
-
-```
-src/components/components/MovieSearch.jsx
-```
-
-**✅ Features**
-
-* Uses `useDebounce` to delay calling `onSearch` until user stops typing for 500ms
-* Controlled input with internal `query` state
-* Accessible `aria-label` and clear placeholder with search icon
-* Fires `onSearch(debouncedQuery.trim())` whenever debounced value changes
-
-**🧩 Code**
+**🔍 `src/components/components/MovieSearch.jsx`**
 
 ```jsx
 import { useEffect, useState } from 'react';
@@ -975,21 +959,24 @@ const MovieSearch = ({ onSearch }) => {
 export default MovieSearch;
 ```
 
+---
+
 **🧠 UX Guidelines**
 
-* Show search results only after user pauses typing to avoid performance issues
-* Preserve the input value visibly as user types without lag
-* Use a clear placeholder with an icon to indicate purpose at a glance
-* Ensure keyboard focus and accessible form markup for screen readers
-* Trim whitespace before passing to parent to prevent unnecessary empty queries
+* Delay search execution until the user pauses typing to reduce unnecessary API calls.
+* Keep the input responsive and visible during the debounce interval.
+* Use a clear, emoji-augmented placeholder (`🔍 Search movies...`) to communicate purpose.
+* Include `aria-label` on the `<input>` for screen-reader compatibility.
 
-**⚙️ Ensure Clean, Robust Code**
+---
 
-* **Single Responsibility:** Component solely handles capturing and debouncing search input
-* **Open/Closed:** Accepts any parent-provided `onSearch` callback without internal changes
-* **DRY Principle:** Leverages `useDebounce` hook instead of manual timeout logic
-* **Modularity:** Keeps logic decoupled—presentation (`input`) vs. debounce behavior
-* **Performance:** Debounces state updates to reduce re-renders in parent
+**⚙️ Clean, Robust Code**
+
+* **Single Responsibility:** The hook handles timing logic; the component handles UI and events.
+* **Open/Closed Principle:** You can adjust `delayMs` or swap out `onSearch` without touching internal logic.
+* **DRY Principle:** Centralizes debounce behavior in one reusable hook.
+* **Modularity:** Both files are self-contained—easy to test and maintain.
+* **Error Tolerance:** Any value type works with `useDebounce` (strings, numbers, objects).
 
 ---
 
@@ -1228,10 +1215,5 @@ createRoot(document.getElementById('root')).render(
 * **Modularity:** Splits third-party CSS imports from application’s own `index.css`
 * **DRY Principle:** Centralizes all global imports in one entry file
 * **Maintainability:** Clear import order (fonts → libs → app CSS → render)
-
----
-
-**Comment:**
-With these steps, the hero slider, custom hooks, loading skeletons, debounced search, and overall application structure are fully integrated and sequenced correctly. Each module now uses clear, descriptive variable names and avoids redundant state, resulting in a clean, maintainable, and accessible codebase.
 
 ---
