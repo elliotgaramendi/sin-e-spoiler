@@ -1,225 +1,234 @@
-## 🗓️ Curso: React Developer Pro – De Cero a Producción
+# 🗓️ React Developer Pro – De Cero a Producción
 
 ---
 
-### 🔹 Semana 9: Introducción a React 🚀🧠💡💻
+### 🔹 Grupo 1: Fundamentos React & Ecosistema Moderno 🚀⚡💻🧠⭐
 
-**Tema principal:** React como ecosistema declarativo moderno
+**Tema principal:** React 18+ como paradigma declarativo con Concurrent Features
 
 #### 🧩 Temas:
 
-* ❓ ¿Qué es React? ¿Por qué es declarativo?
-* ⚙️ Setup del proyecto con **Vite + JSX**
-* 🗂️ Configuración inicial del `index.html`: `<title>`, favicon, estructura mínima
-* ✨ JSX básico: interpolaciones, atributos, expresiones
-* 🧱 Functional components simples
-* 📦 Props básicas
+* 🔥 **React 18+:** Concurrent rendering, Automatic batching, Strict Mode
+* ⚡ **Vite + TypeScript:** Setup moderno con HMR ultra-rápido
+* 🧱 **JSX & Functional Components:** Sintaxis moderna, composición declarativa
+* 📦 **Props & Destructuring:** Tipado con TypeScript básico, defaultProps
+* 🎨 **Tailwind CSS setup:** Utility-first desde el inicio
+* 🔧 **Dev Tools:** React DevTools, Vite inspector
 
 #### 🌐 Temas transversales:
 
-* 🛡️ **Seguridad:** Sanitización de datos con `{safeString}`
-* ♿ **Accesibilidad inicial:** etiquetas HTML5 mínimas (`<main>`, `<header>`)
-* 🎯 **Buenas prácticas:** estructura limpia desde el inicio
-* 🧠 **Arquitectura:** estructura base del proyecto por convenciones
-* 📐 **Design Patterns:** enfoque declarativo desde el comienzo
+* 🛡️ **Seguridad:** Escape automático en JSX, prevención XSS básica
+* ♿ **Accesibilidad:** HTML5 semántico, landmarks (`<main>`, `<nav>`, `<section>`)
+* 🎯 **Buenas prácticas:** Convenciones de naming, estructura de carpetas moderna
+* 🧠 **Arquitectura:** Feature-based folder structure desde el inicio
+* 📐 **Design Patterns:** Composition over inheritance, Single Responsibility
 
 #### 🔧 Reto:
-
-* Crear `Header`, `HeroBanner` y `MovieTeaser` con datos hardcodeados
+* **MovieLand App:** Header + Hero + MovieCard grid con datos hardcodeados usando TypeScript interfaces básicas y Tailwind
 
 ---
 
-### 🔹 Semana 10: Componentes, Props, Hooks y Eventos 🧩⚡📦🔁
+### 🔹 Grupo 2: Hooks Esenciales & Renderizado Inteligente 🪝⚡🔄📊🎯
 
-**Tema principal:** Interactividad, composición y lógica interna
+**Tema principal:** Estado, efectos y renderizado optimizado con React 18
 
 #### 🧩 Temas:
 
-* 🧱 Componentes reutilizables con props dinámicas
-* 📦 Props anidadas, destructuring y defaults
-* ⚡ `useState` y `useEffect` como hooks esenciales
-* 🔁 Renderizado condicional (`&&`, ternarios, fallback)
-* 🗃️ Renderizado de listas (`.map`, keys, index)
+* 🪝 **useState & useEffect:** Patrones modernos, cleanup, dependency array
+* 🔄 **Renderizado condicional:** Early returns, optional chaining, nullish coalescing
+* 📊 **Listas & Keys:** Renderizado eficiente, stable keys, virtualization concepts
+* ⚡ **React.memo:** Optimización básica, shallow comparison
+* 🎭 **Suspense:** Loading boundaries, error boundaries
+* 🧠 **Custom Hooks básicos:** Lógica reutilizable, separation of concerns
 
 #### 🌐 Temas transversales:
 
-* ♿ **Accesibilidad:** navegación por teclado, uso correcto de roles y focus
-* 🎯 **Buenas prácticas:** separación UI/lógica, función pura y simple
-* 🛡️ **Seguridad:** validación manual y control de eventos inseguros
-* 📐 **Design Patterns:** presentación vs contenedor, separación por responsabilidad
+* 📐 **Design Patterns:** Container/Presentational, Render Props básico
+* ♿ **Accesibilidad:** Focus management, ARIA states, keyboard navigation
+* 🛡️ **Seguridad:** Input sanitization, controlled vs uncontrolled components
+* 🎯 **Buenas prácticas:** Hook rules, exhaustive dependencies, clean effects
+* 🧠 **Arquitectura:** Separación lógica/presentacional, hook composition
 
 #### 🔧 Reto:
-
-* Galería de películas con favoritos (toggle visual)
-* Formulario de búsqueda funcional con validación y feedback visual accesible
+* **Interactive Movie Gallery:** Favoritos con localStorage, búsqueda con debounce, loading states con Suspense
 
 ---
 
-### 🔹 Semana 11: Custom Hooks, Librerías básicas de UI 🪝📚🎨🧠
+### 🔹 Grupo 3: Custom Hooks & UI Framework 🪝🎨📚⚡🔧
 
-**Tema principal:** Modularidad, lógica compartida y sistema visual escalable
+**Tema principal:** Lógica reutilizable y sistema de diseño profesional
 
 #### 🧩 Temas:
 
-* 🪝 `useEffect` en lógica compartida (loading, timeout, resize)
-* 🧠 Creación de custom hooks reutilizables (`usePremieres`, `useWindowSize`, `useDebounce`)
-* 🎨 Estilos con CSS modular (variables, utilidades, componentes)
-* 📚 Librerías básicas para UI y productividad:
-
-  * 🎠 **swiper** (sliders responsivos)
-  * 💬 **react-toastify** (notificaciones)
-  * ⏳ **react-loading-skeleton** (placeholders visuales)
-  * 🖼️ **@fontsource-variable/open-sans** & **@fontsource-variable/roboto** (fuentes variables)
+* 🪝 **Custom Hooks:** `useDebounce`, `useLocalStorage`, `useAsync`, `useWindowSize`
+* 🎨 **Shadcn UI + Tailwind:** Componentes accesibles y customizables
+* 📚 **React Hook Form:** Formularios performantes con validación
+* 🎭 **Framer Motion básico:** Animaciones fluidas y micro-interacciones
+* ⚡ **Performance Hooks:** `useMemo`, `useCallback`, `useTransition`
+* 🔧 **React DevTools Profiler:** Identificar bottlenecks
 
 #### 🌐 Temas transversales:
 
-* 📐 **Design Patterns:** separación de lógica en hooks para mayor escalabilidad
-* ♿ **Accesibilidad:** sliders con ARIA, inputs accesibles y mensajes claros
-* 🎯 **Buenas prácticas:** creación de hooks genéricos y desacoplados; nombres autoexplicativos
-* 🛡️ **Seguridad:** validación mínima de datos, prevención de efectos mal usados
-* 🧠 **Arquitectura:** archivos organizados por propósito (hooks, styles, utils, components)
+* 📐 **Design Patterns:** Hook Factory, Compound Components
+* 🛡️ **Seguridad:** Form validation, escape user inputs
+* ♿ **Accesibilidad:** Form labels, error announcements, focus trapping
+* 🎯 **Buenas prácticas:** Hook dependency optimization, stable references
+* 🧠 **Arquitectura:** Custom hook library, reusable logic patterns
 
 #### 🔧 Reto:
-
-* Desarrollar una sección de “Estrenos” con:
-
-  * Custom hook `usePremieres` con fetch simulado y control de loading/error
-  * Slider visual accesible con foco por teclado (`Hero` y `PremieresSlider`)
-  * Estilo modular con CSS personalizado + variables de fuente variable
-  * Toast al seleccionar favorito + validación simple en formulario de búsqueda
+* **Advanced Movie Search:** Formulario con validación realtime, filtros animados, custom hooks para API calls con error handling
 
 ---
 
-### 🔹 Semana 12: Routing, Estado Global, Fetching y Frameworks UI 🔄🧭📡📁
+### 🔹 Grupo 4: Routing & Estado Global 🧭🌍📡🔄💾
 
-**Tema principal:** Navegación, datos en tiempo real y frameworks escalables
+**Tema principal:** Navegación inteligente y state management escalable
 
 #### 🧩 Temas:
 
-* 🧭 React Router: rutas públicas, privadas y dinámicas (`/movies/:slug`)
-* 🌍 Zustand: creación de múltiples stores (usuario, carrito, tema)
-* 📡 Axios (API client) + TanStack Query: caching, retries, invalidaciones, paginación
-* 🧩 UI Framework: integración con Shadcn UI y Tailwind
-* 🦴 Skeletons loaders + fallback visuales con Suspense
+* 🧭 **TanStack Router:** Type-safe routing, nested layouts, search params
+* 🌍 **Zustand:** Estado global simple, middleware, devtools
+* 📡 **TanStack Query:** Server state, caching, optimistic updates, infinite queries
+* 💾 **Persistence:** Zustand persist, hydration patterns
+* 🔄 **Data Fetching:** Suspense for data fetching, streaming
+* 🎯 **Error Boundaries:** Error recovery, fallback UIs
 
 #### 🌐 Temas transversales:
 
-* 📐 **Arquitectura:** organización modular por features
-* 🛡️ **Seguridad:** protección de rutas, API keys en `.env`
-* ♿ **Accesibilidad:** estructura semántica, navegación y roles claros
-* 🎯 **Buenas prácticas:** separación visual/lógica y carga eficiente
-* 📐 **Design Patterns:** manejo por layout + store encapsulado
+* 📐 **Design Patterns:** Observer, Facade, Repository pattern para APIs
+* 🛡️ **Seguridad:** Route guards, protected routes, API key management
+* ♿ **Accesibilidad:** Skip navigation, route announcements, focus management
+* 🎯 **Buenas prácticas:** Code splitting, lazy loading, prefetching
+* 🧠 **Arquitectura:** Feature-based routing, store composition
 
 #### 🔧 Reto:
-
-* Página `/movies` con loading inteligente (skeletons), cards desde API TMDB y detalle con routing dinámico
+* **Multi-page Movie App:** Home, Movies, Movie Detail con routing dinámico, estado global para favoritos, infinite scroll con TanStack Query
 
 ---
 
-### 🔹 Semana 13: Autenticación, Seguridad y Testing 🔐🧪🧠🌍
+### 🔹 Grupo 5: Autenticación Moderna & Testing Profesional 🔐🧪⚡🛡️🎯
 
-**Tema principal:** Protección de rutas, gestión de usuarios y pruebas de confianza
+**Tema principal:** Seguridad robusta y testing confidence
 
 #### 🧩 Temas:
 
-* 🔐 Login/Register con React Hook Form + validación + toast
-* 🔑 Rutas privadas con Zustand + persistencia de sesión
-* 🔏 Encriptación de información sensible en localStorage
-* 🧪 Testing con React Testing Library y Playwright (UI, flows, accesibilidad)
-* 🛡️ Prevención de XSS, validación agresiva y headers seguros
+* 🔐 **Auth moderna:** JWT tokens, refresh tokens, secure storage
+* 🛡️ **Route Protection:** Private routes, role-based access, middleware
+* 🧪 **Vitest + React Testing Library:** Unit tests, integration tests
+* 🎭 **Playwright:** E2E testing, visual regression testing
+* 🔒 **Security Best Practices:** CSRF protection, XSS prevention, CSP headers
+* 🎯 **Mock Service Worker:** API mocking para desarrollo y testing
 
 #### 🌐 Temas transversales:
 
-* ♿ **Accesibilidad:** flujos accesibles con inputs y navegación por teclado
-* 📐 **Design Patterns:** validadores externos, encapsulación de sesión
-* 🧠 **Arquitectura:** sesión centralizada y reusable por contexto/store
-* 🎯 **Buenas prácticas:** testing modular desde hooks hasta vistas
-* 🛡️ **Seguridad:** enfoque full-stack en validación, control y persistencia
+* 📐 **Design Patterns:** Strategy pattern para auth, Guard pattern para routes
+* ♿ **Accesibilidad:** Testing accessibility, axe-core integration
+* 🧠 **Arquitectura:** Auth context, protected route wrappers
+* 🎯 **Buenas prácticas:** Test pyramid, AAA pattern, test isolation
+* 🛡️ **Seguridad:** Penetration testing basics, OWASP top 10
 
 #### 🔧 Reto:
-
-* Autenticación completa con feedback visual + test e2e de login/logout + encriptación simulada en datos del usuario
+* **Auth System Completo:** Login/Register con JWT, protected pages, comprehensive test suite con >80% coverage
 
 ---
 
-### 🔹 Semana 14: Integración de APIs de Inteligencia Artificial 🤖🧠✨🔮
+### 🔹 Grupo 6: AI Integration & Contenido Dinámico 🤖🧠✨🔮📊
 
-**Tema principal:** Contenido dinámico y enriquecido con generación automática
-
-#### 🧩 Temas:
-
-* 🔮 OpenAI API: reseñas sin spoilers con `useAIGeneratedReview`
-* 🧠 Hooks con lógica asíncrona avanzada y manejo de errores
-* ✨ Render dinámico con `dangerouslySetInnerHTML` seguro
-* 📣 `aria-live`, animaciones y UX generativo accesible
-
-#### 🌐 Temas transversales:
-
-* 🛡️ **Seguridad:** sanitizar resultados, controlar HTML remoto
-* 📐 **Arquitectura:** integración externa desacoplada en servicios
-* 🎯 **Buenas prácticas:** patrón efecto-control-render
-* ♿ **Accesibilidad:** lectura dinámica de contenido generado
-* 📐 **Design Patterns:** custom hook como fachada para AI
-
-#### 🔧 Reto:
-
-* Reseña generada por IA en detalle de película con render semántico, respuesta accesible y fallback visual
-
-### 🔹 Semana 15: Pasarela de Pagos, SEO y Deploy 💳🌐🚀⚙️
-
-**Tema principal:** Aplicación lista para producción con visibilidad y protección real
+**Tema principal:** Integración inteligente con APIs de IA generativa
 
 #### 🧩 Temas:
 
-* 💳 Stripe/MercadoPago: integración test mode, validación y tokens
-* 🌐 SEO para SPA: metadata dinámica con Helmet, Open Graph, estructura semántica
-* 🚀 Deploy en Vercel/Render: variables `.env`, build optimizado y rutas limpias
-* ⚙️ Seguridad avanzada en producción: headers (CSP, X-Frame-Options, STS)
-* 🔀 Versionado y despliegue continuo básico (preview envs en Vercel)
+* 🤖 **OpenAI API Integration:** GPT para reseñas, embeddings para búsqueda semántica
+* 🔮 **AI Custom Hooks:** `useAIGeneration`, `useStreamingText`, `useEmbedding`
+* ✨ **Streaming UI:** Server-sent events, progressive content loading
+* 📊 **AI-powered Features:** Recommendations, content generation, image analysis
+* 🧠 **Vector Search:** Basic embedding search con Pinecone/Supabase Vector
+* 🎭 **Progressive Enhancement:** Graceful degradation cuando AI falla
 
 #### 🌐 Temas transversales:
 
-* 🛡️ **Seguridad:** en headers, en la pasarela, en persistencia y almacenamiento
-* 📐 **Arquitectura:** entorno de producción, estructura lista para CI/CD
-* ♿ **Accesibilidad:** contenido correctamente etiquetado para SEO semántico
-* 🎯 **Buenas prácticas:** separación de claves, carga optimizada, logs controlados
-* 📐 **Design Patterns:** `envAdapter`, layout SEO reusable, wrappers de configuración
+* 🛡️ **Seguridad:** API rate limiting, content sanitization, prompt injection prevention
+* 📐 **Design Patterns:** Strategy for different AI providers, Circuit Breaker
+* ♿ **Accesibilidad:** AI content announcements, alternative content paths
+* 🎯 **Buenas prácticas:** Cost optimization, caching AI responses, error boundaries
+* 🧠 **Arquitectura:** AI service layer, prompt management, fallback strategies
 
 #### 🔧 Reto:
-
-* Implementar pasarela de pagos simulada + deploy en Vercel + validación con helmet y headers custom
+* **AI-Enhanced Movie Platform:** Reseñas generadas por IA, recomendaciones personalizadas, búsqueda semántica con embeddings
 
 ---
 
-### 🔹 Semana 16: Siguientes Pasos Profesionales 🧠⚙️🧪📈
+### 🔹 Grupo 7: Monetización & Deploy Profesional 💳🌐🚀⚙️📈
 
-**Tema principal:** Convertirte en un Frontend Architect moderno y competitivo
+**Tema principal:** Aplicación production-ready con revenue streams
 
 #### 🧩 Temas:
 
-* 🏗️ Arquitectura avanzada:
-
-  * Mono-repo, estructura atómica por dominio, microfrontends (introductorio)
-* 🎭 Rendering & performance:
-
-  * `React.memo`, `useMemo`, `useCallback`, Suspense avanzado, carga progresiva
-* 🧪 Testing de alto nivel:
-
-  * Snapshot testing, mocks avanzados, integración en CI/CD
-* ✍️ Extensiones y herramientas:
-
-  * TypeScript básico (tipado de props, interfaces simples)
-  * Animaciones con Framer Motion
-  * Introducción real a React Native (arquitectura común, diferencias clave)
+* 💳 **Stripe Integration:** Payment intents, webhooks, subscription billing
+* 🌐 **SEO Avanzado:** React Helmet Async, structured data, Core Web Vitals
+* 🚀 **Vercel Deploy:** Edge functions, ISR, analytics integration  
+* ⚙️ **Monitoring:** Sentry error tracking, Vercel analytics, performance monitoring
+* 📈 **A/B Testing:** Feature flags, experimentation frameworks
+* 🔧 **CI/CD:** GitHub Actions, automated testing, preview deployments
 
 #### 🌐 Temas transversales:
 
-* 📐 **Design Patterns:** Observer, Facade, Strategy, Adapter, Command, Decorator, Factory, Reducer (repaso aplicado)
-* 🧠 **Arquitectura:** modelos escalables para apps de equipos grandes
-* ♿ **Accesibilidad:** testing automatizado + axe-core
-* 🛡️ **Seguridad:** revisiones automáticas, manejo de errores y límites
-* 🎯 **Buenas prácticas:** DevX, monitoreo, clean code + CLI linting
+* 🛡️ **Seguridad:** Payment security, webhook validation, environment secrets
+* 📐 **Design Patterns:** Adapter pattern para payment providers, Observer para analytics
+* ♿ **Accesibilidad:** Payment flow accessibility, screen reader optimization
+* 🎯 **Buenas prácticas:** Performance budgets, bundle analysis, tree shaking
+* 🧠 **Arquitectura:** Microservices básico, edge computing, CDN optimization
 
 #### 🔧 Reto:
+* **Production Movie Platform:** Deploy completo con pagos reales (test mode), monitoring, SEO optimization, CI/CD pipeline
 
-* Migrar una sección del proyecto a TypeScript + snapshot test + animación con Framer Motion + mini presentación final del proyecto
+---
+
+### 🔹 Grupo 8: Optimización Avanzada & Arquitectura Escalable ⚡🏗️🎨🔬💎
+
+**Tema principal:** Performance de nivel enterprise y arquitectura futura
+
+#### 🧩 Temas:
+
+* ⚡ **React 18 Concurrent:** `useTransition`, `useDeferredValue`, `startTransition`
+* 🏗️ **Micro-frontends:** Module federation básico, shared dependencies
+* 🎨 **Advanced Animations:** Framer Motion avanzado, layout animations, gestures
+* 🔬 **Performance Profiling:** React DevTools Profiler, Chrome DevTools, Web Vitals
+* 💎 **Advanced TypeScript:** Generic components, utility types, branded types
+* 🚀 **Next.js Introduction:** App Router, Server Components, Server Actions
+
+#### 🌐 Temas transversales:
+
+* 📐 **Design Patterns:** Module pattern, Plugin architecture, Event-driven architecture
+* 🧠 **Arquitectura:** Scalable folder structure, design system architecture
+* ♿ **Accesibilidad:** Advanced ARIA, accessibility testing automation
+* 🛡️ **Seguridad:** Advanced CSP, security headers, dependency scanning
+* 🎯 **Buenas prácticas:** Code splitting strategies, performance budgets, monitoring
+
+#### 🔧 Reto:
+* **Proyecto Final Portfolio:** Migrar secciones clave a Next.js App Router, implementar micro-frontend básico, advanced animations, comprehensive performance optimization
+
+---
+
+## 🔄 **PRINCIPALES MEJORAS IMPLEMENTADAS:**
+
+### ✨ **Tecnologías Actualizadas 2024-2025:**
+- **TanStack Router** (más type-safe que React Router v6)
+- **TanStack Query v5** (nueva API, mejor performance)  
+- **Vitest** en lugar de Jest (más rápido, mejor con Vite)
+- **React 18 Concurrent Features** (useTransition, Suspense avanzado)
+- **Next.js App Router** (introducción al final como path futuro)
+
+### 🚀 **Nuevas Características:**
+- **AI Integration completa** con streaming y embeddings
+- **TypeScript progresivo** desde el grupo 1
+- **Performance profiling** con herramientas reales
+- **Micro-frontends introduction** para escalabilidad
+- **Advanced testing** con Playwright y MSW
+- **Modern deployment** con edge functions y monitoring
+
+### 📈 **Estructura Mejorada:**
+- **Progresión más lógica** de conceptos
+- **Proyectos más interconnectados** (cada uno builds sobre el anterior)
+- **Balance theory/practice** optimizado (70% hands-on)
+- **Retos más profesionales** que van directo al portfolio
