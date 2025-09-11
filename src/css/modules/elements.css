@@ -1,8 +1,8 @@
 .title {
   margin: 0;
-  font-weight: 800;
-  font-size: calc(var(--size) * 8);
   font-family: var(--primary-font);
+  font-size: calc(var(--size) * 8);
+  font-weight: 800;
 }
 
 .title--sm {
@@ -10,20 +10,20 @@
 }
 
 .title--xs {
-  font-weight: 700;
   font-size: calc(var(--size) * 6);
+  font-weight: 700;
 }
 
 .title--2xs {
-  font-weight: 700;
   font-size: calc(var(--size) * 5);
+  font-weight: 700;
 }
 
 .subtitle {
   margin: 0;
-  font-weight: 700;
-  font-size: calc(var(--size) * 6);
   font-family: var(--secondary-font);
+  font-size: calc(var(--size) * 6);
+  font-weight: 700;
 }
 
 .subtitle--sm {
@@ -31,20 +31,20 @@
 }
 
 .subtitle--xs {
-  font-weight: 600;
   font-size: calc(var(--size) * 5);
+  font-weight: 600;
 }
 
 .subtitle--2xs {
-  font-weight: 600;
   font-size: calc(var(--size) * 4.5);
+  font-weight: 600;
 }
 
 .text {
   margin: 0;
-  font-weight: 400;
-  font-size: calc(var(--size) * 4);
   font-family: var(--secondary-font);
+  font-size: calc(var(--size) * 4);
+  font-weight: 400;
 }
 
 .text--lg {
@@ -56,25 +56,25 @@
 }
 
 .text--xs {
-  font-weight: 300;
   font-size: calc(var(--size) * 3);
+  font-weight: 300;
 }
 
 .interactive {
   margin: 0;
-  font-weight: 600;
-  font-size: calc(var(--size) * 3.5);
   font-family: var(--primary-font);
+  font-size: calc(var(--size) * 3.5);
+  font-weight: 600;
 }
 
 .interactive--2xl {
-  font-weight: 700;
   font-size: calc(var(--size) * 5);
+  font-weight: 700;
 }
 
 .interactive--xl {
-  font-weight: 700;
   font-size: calc(var(--size) * 4.5);
+  font-weight: 700;
 }
 
 .interactive--lg {
@@ -86,8 +86,8 @@
 }
 
 .interactive--xs {
-  font-weight: 500;
   font-size: calc(var(--size) * 2.5);
+  font-weight: 500;
 }
 
 .img {
@@ -134,10 +134,10 @@
 
   &:hover {
     color: var(--primary-color);
-  }
 
-  &:hover::before {
-    transform: scale(1);
+    &::before {
+      transform: scale(1);
+    }
   }
 }
 

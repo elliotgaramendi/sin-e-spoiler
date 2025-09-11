@@ -118,7 +118,7 @@
   padding-block: calc(var(--size) * 20);
   box-sizing: border-box;
 
-  &>* {
+  &>.container {
     width: 100%;
   }
 
@@ -129,15 +129,15 @@
 
 .hero__title {
   margin: 0;
-  font-weight: 800;
-  font-size: clamp(2rem, 5vw, 4rem);
   font-family: var(--primary-font);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
 }
 
 .hero__paragraph {
   margin: 0;
-  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
   font-family: var(--secondary-font);
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
 }
 
 .section {
@@ -161,17 +161,6 @@
     --primary-card-color: var(--primary-color);
     transform: scale(1.025);
   }
-}
-
-.card--overlay {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: flex-end;
-  max-width: calc(var(--size) * 106.5);
-  height: calc(var(--size) * 60);
-  background-color: var(--primary-background);
-  text-decoration: none;
 }
 
 .card__image {
@@ -226,13 +215,5 @@
 }
 
 .footer {
-  position: relative;
-
-  &>.nav:nth-child(odd) {
-    backdrop-filter: blur(calc(var(--size) * 4));
-  }
-
-  &>.nav:nth-child(even) {
-    background-color: var(--light-shadow);
-  }
+  box-shadow: 0 0 calc(var(--size) * 0.0625) calc(var(--size) * 0.03125) var(--shadow);
 }
