@@ -1,38 +1,28 @@
-### Step 11: Update Base CSS I Form, Typography & Utilities 🎨⚙️
+### Step 13: Update Base CSS - Form, Typography & Utilities
 
----
+Complete the CSS architecture with enhanced form controls, typography scaling, and utility classes for interactive cinema experiences! 🎨⚙️
 
-**📁 File Paths**
+**📁 Folder Structure:**
+```
+src/css/modules/ 📂
+├── components.css 📌
+├── elements.css 🧱
+└── utils.css 🧰
+```
 
-- `src/css/modules/components.css`
-- `src/css/modules/elements.css`
-- `src/css/modules/utils.css`
+**✅ Features:**
+- 📱 Responsive form container scaling for mobile and desktop
+- ✨ Animated form inputs with focus states and transitions
+- 📝 Extended typography system with large text variants
+- 🎨 Secondary button variant for complementary actions
+- 📐 Position utility classes for consistent layout spacing
 
----
+**🧩 Code:**
 
-**✅ Features**
-
-- **Responsive Form Container**: `.form` scales up at ≥768px for wider layouts
-- **Animated Form Input**: `.form__input` with focus outline, border-color and box-shadow transitions
-- **Extended Typography**: new `.text--lg` for larger text headings
-- **Secondary Button Variant**: `.button--secondary` mapping to secondary color tokens
-- **Position Utility**: `.l-2` for consistent left offset spacing
-
----
-
-**🧩 Code**
-
-<details>
-<summary><code>src/css/modules/components.css</code></summary>
-
+**📌 `src/css/modules/components.css`**
 ```css
-/* … existing .card rules … */
+/* ... existing .card rules ... */
 
-.card__body {
-  /* … */
-}
-
-/* ↓ Add form styles below .card__body */
 .form {
   width: min(calc(var(--size) * 80), 100%);
   display: flex;
@@ -69,118 +59,89 @@
     color: var(--secondary-text);
   }
 }
-
-/* … rest of file … */
 ```
 
-</details>
-
-<details>
-<summary><code>src/css/modules/elements.css</code></summary>
-
+**🧱 `src/css/modules/elements.css`**
 ```css
-/* … existing .text rules … */
+/* ... existing .text rules ... */
 
-.text {
-  /* … */
-}
-
-/* ↓ Add .text--lg below .text */
 .text--lg {
   font-size: calc(var(--size) * 4.5);
 }
 
-/* … existing .button--primary rules … */
+/* ... existing .button--primary rules ... */
 
-/* ↓ Add .button--secondary after .button--primary */
 .button--secondary {
   --primary-button-color: var(--secondary-color);
   --primary-button-text: var(--primary-text);
 }
-
-/* … rest of file … */
 ```
 
-</details>
-
-<details>
-<summary><code>src/css/modules/utils.css</code></summary>
-
+**🧰 `src/css/modules/utils.css`**
 ```css
-/* … existing positioning utilities … */
+/* ... existing positioning utilities ... */
 
-.p-absolute {
-  /* … */
-}
-
-/* ↓ Add .l-2 within position group below .r-2 */
 .l-2 {
   left: calc(var(--size) * 2);
 }
 ```
 
-</details>
+**🧠 Architecture Benefits:**
+- **Form Enhancement** 📱 Constrained width for readability, expandable on larger screens
+- **Interactive Feedback** ✨ Clear focus states guide user interactions effectively
+- **Typography Scaling** 📝 Hierarchical text sizes for better content organization
+- **Button Variants** 🎨 Multiple button styles for diverse UI actions
+- **Utility System** 📐 Consistent spacing utilities for precise positioning
 
 ---
 
-**🧠 UX Guidelines**
+### Step 14: Add Reusable Button Component - Children & Variants
 
-* **Form Layout**: Constrain form width for readability on mobile, expand on tablet/desktop
-* **Input Feedback**: Clear focus states (outline + shadow) guide user interactions
-* **Typography Scale**: Use `.text--lg` for section headings or important messages
-* **Accessible Buttons**: Apply `.button--secondary` for secondary actions, maintain contrast
-* **Consistent Spacing**: Utilize `.l-2` (and other utilities) for uniform offsets and positioning
+Build a flexible, accessible button component with variant support and full customization options! 🧩🎨
 
----
+**📁 File Path:** `src/ui/components/elements/Button.tsx`
 
-### Step 12: Add Reusable Button Component I Children & Variants 🧩🧱🎨
+**✅ Features:**
+- 🧒 Flexible children prop for text, icons, or mixed content
+- 🎨 Variant prop mapping to CSS classes for consistent styling
+- 🔧 Full customization with className and spread props
+- ♿ Fully accessible with semantic type and ARIA attributes
+- 🛡️ Type-safe props with proper interface definition
 
----
+**🧩 Code:**
 
-**📁 File Path**
+```tsx
+import type { ReactNode } from "react";
 
-```
-src/components/elements/Button.jsx
-```
+interface AppButtonProps {
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary' | 'outlinePrimary';
+  className?: string;
+  onClick?: () => void;
+  children: ReactNode;
+}
 
----
-
-**✅ Features**
-
-- Accepts flexible `children` prop for text, icons, or mixed content
-- Supports `variant` prop mapped to CSS classes for consistent styling
-- Full customization with `className`
-- Fully accessible with semantic `type` and optional ARIA attributes
-- Spreads additional props (`...rest`) for maximum flexibility (e.g., `aria-label`, `data-*`)
-- No default no-op handler on `onClick`, allowing it to be optional
-
----
-
-**🧩 Code**
-
-```jsx
 const variantClassMap = {
   primary: 'button--primary',
   secondary: 'button--secondary',
-  outline: 'button--outline-primary',
+  outlinePrimary: 'button--outline-primary',
 };
 
-const Button = ({
+const AppButton = ({
   type = 'button',
-  variant = '',
+  variant,
   className = '',
   onClick,
-  disabled = false,
   children,
   ...rest
-}) => {
-  const variantClass = variantClassMap[variant] || '';
+}: AppButtonProps) => {
+  const variantClass = (variant && variantClassMap[variant]) || '';
+
   return (
     <button
       type={type}
       className={`button ${variantClass} ${className}`}
       onClick={onClick}
-      disabled={disabled}
       {...rest}
     >
       {children}
@@ -188,95 +149,84 @@ const Button = ({
   );
 };
 
-export default Button;
+export default AppButton;
 ```
 
----
-
-**🧠 UX Guidelines**
-
-* Use `children` for natural, flexible button content
-* Prefer semantic `type` values (`button`, `submit`, `reset`)
-* Pass ARIA attributes via `...rest` for enhanced accessibility
-* Allow `onClick` to be optional; don’t provide default empty handlers
-* Use BEM-style classes for consistent, maintainable styling
+**🧠 Architecture Benefits:**
+- **Type Safety** 🛡️ Interface ensures proper prop usage and prevents runtime errors
+- **Flexible Content** 🧒 Children prop allows for any React content composition
+- **Variant System** 🎨 Consistent styling through mapped CSS classes
+- **Accessibility** ♿ Semantic HTML with proper ARIA attribute support
+- **Extensibility** 🔧 Spread props allow for additional attributes without modification
 
 ---
 
-### Step 13: Update MovieCard Component I Toggle Favorite with Full Object ❤️🖤
+### Step 15: Update MovieCard Component - Toggle Favorite with Full Object
 
----
+Enhance the movie card with interactive favorite functionality using the reusable Button component! ❤️🖤
 
-**📁 File Path**
+**📁 File Path:** `src/ui/components/components/MovieCard.tsx`
 
-```
-src/components/components/MovieCard.jsx
-```
+**✅ Features:**
+- 🖼️ Movie poster display with lazy loading optimization
+- ❤️ Heart button to toggle favorite state with full movie object
+- 🧩 Integration with reusable Button and Rating components
+- ♿ Accessible button with dynamic aria-label based on state
+- 🎭 Genre badge positioning with updated left offset utility
 
----
+**🧩 Code:**
 
-**✅ Features**
-
-* Displays movie poster, genre badge, rating, description, and showtimes
-* Heart button toggles favorite state, controlled by parent via full movie object
-* Uses reusable `Button` and `Rating` components
-* Accessible button with dynamic `aria-label` based on favorite state
-* Lazy loads images for performance
-* Default no-op function for `onToggleFavorite` prop
-
----
-
-**🧩 Code**
-
-```jsx
-import Button from '../elements/Button';
+```tsx
+import type { Movie } from '../../../shared/types/movie.types';
+import AppButton from '../elements/AppButton';
 import Rating from '../widgets/Rating';
 
-const MovieCard = ({ movie, isFavorite, onToggleFavorite = () => { } }) => {
-  const { title, rating, genre, duration, image, description, showTimes } = movie;
+interface MovieCardProps {
+  movie: Movie;
+  isFavorite: boolean;
+  onToggleFavorite?: (movie: Movie) => void;
+}
+
+const MovieCard = ({ movie, isFavorite, onToggleFavorite = () => { } }: MovieCardProps) => {
+  const { title, description, duration, poster, genres, showTimes, rating } = movie;
 
   return (
     <article className="card d-flex f-direction-column">
       <div className="p-relative">
         <img
-          src={image}
-          alt={`${title} poster`}
+          src={poster}
+          alt={`${title} movie poster`}
           width="180"
           height="320"
           loading="lazy"
           className="card__image"
         />
-        <span className="badge badge--primary interactive p-absolute t-2 l-2 f-weight-700">
-          {genre}
-        </span>
-        <Button
+        <span className="badge badge--primary interactive p-absolute t-2 l-2 f-weight-700">{genres[0]?.name || 'Unknown'}</span>
+        <AppButton
           variant="secondary"
           className="interactive p-absolute t-2 r-2"
           onClick={() => onToggleFavorite(movie)}
           aria-label={isFavorite ? `Remove ${title} from favorites` : `Add ${title} to favorites`}
         >
           {isFavorite ? "❤️" : "🤍"}
-        </Button>
+        </AppButton>
       </div>
+
       <div className="card__body f-1 g-2">
         <h3 className="title title--2xs">{title}</h3>
         <div className="d-flex a-items-center g-2">
           <Rating value={rating} />
           <span className="interactive c-secondary">{duration}</span>
         </div>
-        <p className="text text--sm c-shadow">
-          {description.slice(0, 256)}...
-        </p>
+        <p className="text text--sm c-shadow">{description.slice(0, 128)}...</p>
         <div className="d-flex f-direction-column g-2 m-top-auto">
-          <h4 className="interactive interactive--lg c-primary">
-            Today's Showtimes
-          </h4>
+          <h4 className="subtitle subtitle--2xs c-primary">Today's Showtimes ⏰</h4>
           <div className="d-flex f-wrap g-2">
             {showTimes.map((time, index) => (
               <a
                 key={index}
                 className="button button--outline-primary interactive interactive--sm"
-                aria-label={`Show time ${time} for ${title}`}
+                aria-label={`Book showtime ${time} for ${title}`}
               >
                 {time}
               </a>
@@ -291,44 +241,38 @@ const MovieCard = ({ movie, isFavorite, onToggleFavorite = () => { } }) => {
 export default MovieCard;
 ```
 
----
-
-**🧠 UX Guidelines**
-
-* Make heart button large and easy to tap
-* Use clear and dynamic `aria-label` for screen readers
-* Keep favorite icon consistent (❤️ or 🤍)
-* Lazy load images to optimize performance
+**🧠 Architecture Benefits:**
+- **Component Composition** 🧩 Reuses Button and Rating components for consistency
+- **Interactive State** ❤️ Clear visual feedback for favorite toggle functionality
+- **Type Safety** 🛡️ Proper interfaces ensure correct prop usage
+- **Accessibility** ♿ Dynamic ARIA labels improve screen reader experience
+- **Performance** ⚡ Lazy loading images optimizes page load times
 
 ---
 
-### Step 14: Add MovieSearch Component I Controlled Input with Debounce 🔍⌛
+### Step 16: Add MovieSearch Component - Controlled Input with Debounce
 
----
+Create a smart search component with debounced input for optimal performance and user experience! 🔍⌛
 
-**📁 File Path**
+**📁 File Path:** `src/ui/components/components/MovieSearch.tsx`
 
-```
-src/components/components/MovieSearch.jsx
-```
+**✅ Features:**
+- 🔍 Controlled input with internal state management
+- ⌛ 500ms debounce prevents excessive API calls or filtering
+- ♿ Accessible form labels and semantic search input
+- 🎨 Consistent styling with form input classes
+- 🧹 Automatic cleanup of timeout on component unmount
 
----
+**🧩 Code:**
 
-**✅ Features**
-
-* Controlled input with internal state
-* Calls `onSearch` prop after 500 ms debounce on typing stop
-* Accessible label and placeholder for usability
-* Simple, clean design consistent with app
-
----
-
-**🧩 Code**
-
-```jsx
+```tsx
 import { useEffect, useState } from 'react';
 
-const MovieSearch = ({ onSearch }) => {
+interface MovieSearchProps {
+  onSearch: (searchTerm: string) => void;
+}
+
+const MovieSearch = ({ onSearch }: MovieSearchProps) => {
   const [input, setInput] = useState('');
 
   useEffect(() => {
@@ -345,7 +289,7 @@ const MovieSearch = ({ onSearch }) => {
         type="search"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Search movies..."
+        placeholder="Search movies... 🎬"
         className="form__input interactive interactive--xl t-align-center"
         aria-label="Search movies"
       />
@@ -356,48 +300,52 @@ const MovieSearch = ({ onSearch }) => {
 export default MovieSearch;
 ```
 
----
-
-**🧠 UX Guidelines**
-
-* Debounce avoids excessive renders and improves performance
-* Use semantic `role="search"` and accessible labels
-* Clear placeholder helps users understand purpose
-* Controlled input for React state sync
+**🧠 Architecture Benefits:**
+- **Performance Optimization** ⌛ Debounce prevents excessive function calls
+- **Controlled Input** 🔍 React state synchronization ensures predictable behavior
+- **Accessibility** ♿ Semantic search input with proper ARIA labeling
+- **User Experience** 🎨 Clear placeholder guides user interaction
+- **Memory Management** 🧹 Proper cleanup prevents memory leaks
 
 ---
 
-### Step 15: Update MovieList Component I Render Conditional with Empty State 🧩
+### Step 17: Update MovieGrid Component - Conditional Rendering with Empty State
 
----
+Transform the MovieGrid into a flexible MovieList component with comprehensive state management! 🧩📱
 
-**📁 File Path**
+**📁 File Path:** `src/ui/components/modules/MovieList.tsx`
 
-```
-src/components/modules/MovieList.jsx
-```
+**✅ Features:**
+- 🎬 Flexible section rendering with custom ID and title
+- ❤️ Favorites array support for heart toggle functionality
+- 🎭 Empty state handling with friendly user messages
+- 🧩 MovieCard integration with favorite state management
+- 📱 Responsive grid layout for all screen sizes
 
----
+**🧩 Code:**
 
-**✅ Features**
-
-* Accepts `id`, `title`, `movies`, `favorites` (array of objects), and `onToggleFavorite` callback
-* Renders loading, empty, or movie grid states based on `movies.length`
-* Reuses `MovieCard` component with favorite state and toggle handler
-* Shows friendly messages when no movies or favorites found
-
----
-
-**🧩 Code**
-
-```jsx
+```tsx
+import type { Movie } from '../../../shared/types/movie.types';
 import MovieCard from '../components/MovieCard';
 
-const MovieList = ({ id, title, movies, favorites = [], onToggleFavorite }) => (
+interface MovieGridProps {
+  id: string;
+  title: string;
+  movies: Movie[];
+  favorites?: Movie[];
+  onToggleFavorite?: (movie: Movie) => void;
+}
+
+const MovieGrid = ({
+  id,
+  title,
+  movies,
+  favorites = [],
+  onToggleFavorite
+}: MovieGridProps) => (
   <section className="section" id={id}>
     <div className="container d-flex f-direction-column g-8">
       <h2 className="title c-primary t-align-center">{title}</h2>
-
       {movies.length === 0 ? (
         <p className="text text--lg t-align-center">No movies found 😞</p>
       ) : (
@@ -406,7 +354,7 @@ const MovieList = ({ id, title, movies, favorites = [], onToggleFavorite }) => (
             <MovieCard
               key={movie.id}
               movie={movie}
-              isFavorite={favorites.some(favorite => favorite.id === movie.id)} 
+              isFavorite={favorites.some(favorite => favorite.id === movie.id)}
               onToggleFavorite={onToggleFavorite}
             />
           ))}
@@ -416,47 +364,41 @@ const MovieList = ({ id, title, movies, favorites = [], onToggleFavorite }) => (
   </section>
 );
 
-export default MovieList;
+export default MovieGrid;
 ```
 
----
-
-**🧠 UX Guidelines**
-
-* Friendly empty-state message improves user experience
-* Use `.some()` to check favorites efficiently
-* Grid layout ensures responsive, consistent movie cards
-
----
-
-### Step 16: Update Hero Component I Search & Call to Action 🎬🔍
+**🧠 Architecture Benefits:**
+- **Conditional Rendering** 🎭 Graceful handling of empty states with user-friendly messages
+- **Flexible Configuration** 🔧 Customizable section ID and title for different contexts
+- **State Management** ❤️ Efficient favorite checking using array.some() method
+- **Component Reusability** 🧩 Single component handles multiple movie list scenarios
+- **Performance Efficiency** ⚡ Optimized rendering with proper key props and state checks
 
 ---
 
-**📁 File Path**
+### Step 18: Update Hero Component - Search & Call to Action Integration
 
-```
-src/components/modules/Hero.jsx
-```
+Enhance the hero section with integrated search functionality and compelling call-to-action buttons! 🎬🔍
 
----
+**📁 File Path:** `src/ui/components/modules/Hero.tsx`
 
-**✅ Features**
+**✅ Features:**
+- 🎯 Prominent hero banner with engaging title and description
+- 🔘 Two strategic CTA buttons for user navigation
+- 🔍 Integrated MovieSearch component with event handling
+- 📱 Responsive flexbox layout for mobile-first design
+- 🌟 Semantic HTML structure with proper accessibility
 
-- Renders a prominent hero banner with title and description
-- Includes two CTA buttons (“Browse Movies” and “Coming Soon”)
-- Integrates `MovieSearch` to trigger `onSearch` via `handleEvent` prop
-- Responsive flexbox layout for mobile-first design
-- Uses semantic HTML (`<article>`, `<h1>`, `<p>`, `<a>`)
+**🧩 Code:**
 
----
-
-**🧩 Code**
-
-```jsx
+```tsx
 import MovieSearch from '../components/MovieSearch';
 
-const Hero = ({ handleEvent }) => {
+interface HeroProps {
+  handleEvent: (searchTerm: string) => void;
+}
+
+const Hero = ({ handleEvent }: HeroProps) => {
   return (
     <article className="hero">
       <div className="container d-flex f-direction-column a-items-center g-8">
@@ -466,16 +408,19 @@ const Hero = ({ handleEvent }) => {
         </h1>
         <div className="d-flex f-direction-column a-items-center g-4">
           <p className="hero__paragraph t-align-center">
-            Your movie app with advanced features, premieres, and interactive AR experiences.
+            Your movie app with advanced features, premieres, and interactive AR experiences. 🎬✨
           </p>
           <div className="flexbox flexbox--responsive g-4">
             <a
-              href="#now-showing"
+              href="#movies"
               className="button button--primary interactive interactive--xl"
             >
               🎬 Browse Movies
             </a>
-            <a className="button button--outline-primary interactive interactive--xl">
+            <a 
+              href="#coming-soon" 
+              className="button button--outline-primary interactive interactive--xl"
+            >
               🍃 Coming Soon
             </a>
           </div>
@@ -489,62 +434,51 @@ const Hero = ({ handleEvent }) => {
 export default Hero;
 ```
 
----
-
-**🧠 UX Guidelines**
-
-* Keep the main headline concise and center-aligned for impact
-* Ensure CTA buttons are large, with clear labels and hover states
-* Place the search input below CTAs to guide user flow
-* Maintain adequate spacing (`g-8`, `g-4`) for readability
-* Use ARIA-accessible form controls in `MovieSearch` for inclusivity
+**🧠 Architecture Benefits:**
+- **User Flow Optimization** 🎯 Strategic placement guides users from headline to action
+- **Search Integration** 🔍 Seamless search functionality within hero context
+- **Visual Hierarchy** 🌟 Clear content progression from title to CTAs to search
+- **Responsive Design** 📱 Flexible button layout adapts to screen sizes
+- **Event Handling** 🔧 Clean prop drilling for search functionality
 
 ---
 
-### Step 17: Update App Component I useState + LocalStorage + Search Integration ⚙️🧠💾
+### Step 19: Update App Component - State Management with localStorage & Search
 
----
+Transform the App into a comprehensive state management hub with persistent favorites and dynamic filtering! ⚙️🧠💾
 
-**📁 File Path**
+**📁 File Path:** `src/App.tsx`
 
-```
-src/App.jsx
-```
+**✅ Features:**
+- 🎬 Movies state management with search filtering
+- ❤️ Persistent favorites using localStorage with full movie objects
+- 🔍 Search term state with real-time movie filtering
+- 🔄 Toggle favorite functionality with local storage sync
+- 📑 Conditional rendering of favorites section when populated
 
----
+**🧩 Code:**
 
-**✅ Features**
-
-* Manages `movies` list and `favorites` state storing full movie objects
-* Persists `favorites` in `localStorage` under key `sin-e-favorites`
-* Tracks `searchTerm` state and filters movies accordingly
-* Passes `handleToggleFavorite` and `setSearchTerm` down to child components
-* Conditionally renders a separate “Favorites” section if any exist
-
----
-
-**🧩 Code**
-
-```jsx
+```tsx
 import { useState } from 'react';
-import Footer from './components/layouts/Footer';
-import Header from './components/layouts/Header';
-import Hero from './components/modules/Hero';
-import MovieList from './components/modules/MovieList';
-import { getMovies } from './utils/movie.util';
+import type { Movie } from './shared/types/movie.types';
+import Footer from './ui/components/layouts/Footer';
+import Header from './ui/components/layouts/Header';
+import Hero from './ui/components/modules/Hero';
+import MovieList from './ui/components/modules/MovieList';
+import { getMoviesFromMockData } from './utils/movie.utils';
 
-const FAVORITE_KEY = 'sin-e-favorites';
+const FAVORITE_KEY = 'cine-spoilers-favorites';
 
 const App = () => {
-  const [movies] = useState(getMovies());
-  const [favorites, setFavorites] = useState(() => {
+  const [movies] = useState<Movie[]>(getMoviesFromMockData());
+  const [favorites, setFavorites] = useState<Movie[]>(() => {
     const stored = localStorage.getItem(FAVORITE_KEY);
     return stored ? JSON.parse(stored) : [];
   });
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const handleToggleFavorite = (movie) => {
+  const handleToggleFavorite = (movie: Movie) => {
     setFavorites(prev => {
       const exists = prev.some(favorite => favorite.id === movie.id);
       const updated = exists
@@ -589,14 +523,10 @@ const App = () => {
 export default App;
 ```
 
----
-
-**🧠 UX Guidelines**
-
-* Initialize `favorites` from `localStorage` to persist user choices
-* Centralize state and handlers in `App` to avoid prop drilling
-* Debounce search input upstream so filtering remains responsive
-* Display “Favorites” only when the array is non-empty for clarity
-* Keep header and footer outside search/list to maintain consistent layout
-
----
+**🧠 Architecture Benefits:**
+- **State Centralization** 🧠 Single source of truth for all application state
+- **Data Persistence** 💾 localStorage integration maintains user preferences
+- **Type Safety** 🛡️ Full typing ensures runtime error prevention
+- **Performance Optimization** 🔍 Efficient filtering with case-insensitive search
+- **Conditional UI** 📑 Dynamic favorites section improves user experience
+- **Clean Architecture** 🏗️ Proper separation of concerns with clear data flow
