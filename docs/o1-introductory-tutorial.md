@@ -1,46 +1,18 @@
-# 🎬 Cine SpoilerS: Your First React Cinema App✨
+# 🎬 Cine SpoilerS: Your First React Cinema App
 
 _A professional guide to building a modern cinema web application using React, TypeScript, and clean CSS architecture._
 
-🎥 Welcome to **Cine SpoilerS**, an AI-enhanced movie listing platform where you can see everything without spoilers! This guide will walk you through building your first React app with TypeScript, Vite, and modern CSS patterns. 🚀
+Welcome to **Cine SpoilerS**, an AI-enhanced movie listing platform where you can explore cinema without spoilers. This guide walks you through building your first React app with TypeScript, Vite, and modern CSS patterns.
 
 ---
 
 ## Table of Contents
 
-- [🎬 Cine SpoilerS: Your First React Cinema App✨](#-cine-spoilers-your-first-react-cinema-app)
-  - [Table of Contents](#table-of-contents)
-  - [1. Understanding the Concept](#1-understanding-the-concept)
-    - [What is React?](#what-is-react)
-    - [Why Declarative?](#why-declarative)
-    - [The Power of Type Safety](#the-power-of-type-safety)
-    - [Core React Concepts Architecture](#core-react-concepts-architecture)
-    - [Component Structure Pattern](#component-structure-pattern)
-  - [2. Environment Setup](#2-environment-setup)
-    - [Prerequisites](#prerequisites)
-    - [Creating the React App](#creating-the-react-app)
-    - [Project Structure Overview](#project-structure-overview)
-    - [Initial Cleanup \& Setup](#initial-cleanup--setup)
-    - [Development Server](#development-server)
-    - [VS Code Extensions](#vs-code-extensions)
-    - [Project Configuration Files](#project-configuration-files)
-    - [Verify Setup](#verify-setup)
-  - [3. Implementation](#3-implementation)
-    - [Step 0: Base Structure - HTML Entry Setup](#step-0-base-structure---html-entry-setup)
-    - [Step 1: Styles I Base CSS Architecture for "Cine SpoilerS"](#step-1-styles-i-base-css-architecture-for-cine-spoilers)
-    - [Step 2: TypeScript Types - Movie Data Structure](#step-2-typescript-types---movie-data-structure)
-    - [Step 3: Movie Data - TMDB Mock Data](#step-3-movie-data---tmdb-mock-data)
-    - [Step 4: Utility Functions - Data Transformation](#step-4-utility-functions---data-transformation)
-    - [Step 5: Header Component - Navigation Bar](#step-5-header-component---navigation-bar)
-    - [Step 6: Footer Component - Contact \& Info](#step-6-footer-component---contact--info)
-    - [Step 7: Hero Component - Highlight Banner](#step-7-hero-component---highlight-banner)
-    - [Step 8: Rating Component - Star Display](#step-8-rating-component---star-display)
-    - [Step 9: MovieCard Component - Movie Display](#step-9-moviecard-component---movie-display)
-    - [Step 10: MovieGrid Component - Grid Section](#step-10-moviegrid-component---grid-section)
-    - [Step 11: App Component - Main Orchestrator](#step-11-app-component---main-orchestrator)
-    - [Step 12: React Entry Point \& Final Setup](#step-12-react-entry-point--final-setup)
-  - [4. Congratulations!](#4-congratulations)
-  - [5. Next Steps - Group 2 Preview](#5-next-steps---group-2-preview)
+- [1. Understanding the Concept](#1-understanding-the-concept)
+- [2. Environment Setup](#2-environment-setup)
+- [3. Implementation](#3-implementation)
+- [4. Congratulations](#4-congratulations)
+- [5. Next Steps](#5-next-steps)
 
 ---
 
@@ -48,69 +20,42 @@ _A professional guide to building a modern cinema web application using React, T
 
 ### What is React?
 
-🧠 **React** is a modern JavaScript library for building user interfaces declaratively using a component-based architecture. With React, we get powerful features like Concurrent Rendering and improved performance out of the box.
+React is a modern JavaScript library for building user interfaces declaratively using a component-based architecture.
 
 - 🧩 **Component-Based:** Build encapsulated components that manage their own state
 - 🔁 **One-Way Data Flow:** Predictable data movement from parent to child
 - ⚡ **Virtual DOM:** Efficient updates and rendering
 - ✨ **JSX:** Write HTML-like syntax directly in JavaScript
-- 🛡️ **Type Safety:** Enhanced development experience with better tooling
-
----
+- 🛡️ **Type Safety:** Enhanced development experience with TypeScript
 
 ### Why Declarative?
 
-With React, you don't describe step-by-step how to change the UI — you **declare** what the UI should look like, and React handles the updates efficiently.
+With React, you declare what the UI should look like, and React handles the updates efficiently.
 
 ```tsx
-// Declarative approach
 interface WelcomeMessageProps {
   name: string;
 }
 
 const WelcomeMessage = ({ name }: WelcomeMessageProps) => {
-  return (
-    <h2>Hello, {name}! Welcome to Cine SpoilerS 🎉</h2>
-  );
+  return <h2>Hello, {name}! Welcome to Cine SpoilerS</h2>;
 };
 
 export default WelcomeMessage;
 ```
 
----
-
 ### The Power of Type Safety
 
-Modern React development leverages static type checking to catch errors at compile time:
+Modern React development leverages static type checking:
 
-- 🔍 **Better IntelliSense:** Auto-completion and error detection in your IDE
-- 🛡️ **Runtime Error Prevention:** Catch mistakes before they reach production
+- 🔍 **Better IntelliSense:** Auto-completion and error detection
+- 🛡️ **Runtime Error Prevention:** Catch mistakes before production
 - 📚 **Self-Documenting Code:** Types serve as inline documentation
-- 🔧 **Refactoring Confidence:** Make changes across large projects safely
-- 👥 **Team Collaboration:** Clear contracts between components and APIs
-
----
-
-### Core React Concepts Architecture
-
-```
-   Components          Props           JSX              Type Safety
-       │                │              │                    │
-       ▼                ▼              ▼                    ▼
-   ┌─────────┐     ┌─────────┐    ┌─────────┐     ┌──────────────┐
-   │ <Movie  │ ──> │ title:  │ ──>│ <div>   │ ──> │ Compile-time │
-   │   />    │     │ string  │    │  Movie  │     │  Validation  │
-   └─────────┘     └─────────┘    └─────────┘     └──────────────┘
-```
-
-🧭 React apps are made of **functions** that return JSX. Each function accepts **typed props**, manages internal state with hooks, and returns a tree of **JSX elements** with full compile-time safety.
-
----
+- 🔧 **Refactoring Confidence:** Make changes safely across large projects
 
 ### Component Structure Pattern
 
 ```tsx
-// Professional Component Structure
 interface MovieTeaserProps {
   title: string;
   genre?: string;
@@ -140,179 +85,107 @@ const MovieTeaser = ({
 export default MovieTeaser;
 ```
 
-📦 **Key Features:**
-- **Interface definitions** for component contracts
-- **Optional properties** with default values
-- **Event handlers** for user interactions
-- **Conditional rendering** with type-safe checks
-- **Clean export pattern** for module organization
-
 ---
 
 ## 2. Environment Setup
 
 ### Prerequisites
 
-Before starting, ensure you have:
+Ensure you have:
 - **Node.js** (latest LTS version)
 - **npm** or **yarn** package manager
 - **VS Code** with React/TypeScript extensions
 - **Git** for version control
 
----
-
 ### Creating the React App
 
-**📁 Terminal Command:**
 ```bash
 npm create vite@latest cinespoilers -- --template react-ts
 cd cinespoilers
 npm install
 ```
 
-**🧩 What This Creates:**
-- ⚡ **Vite** for lightning-fast development
-- 🔥 **Hot Module Replacement** for instant updates
-- 📦 **Modern build system** with optimized production builds
-- 🛡️ **Full type safety** out of the box
-- 🎯 **ESLint configuration** for code quality
-
----
+This creates:
+- ⚡ Vite for lightning-fast development
+- 🔥 Hot Module Replacement for instant updates
+- 📦 Modern build system with optimized production builds
+- 🛡️ Full type safety out of the box
 
 ### Project Structure Overview
 
 ```
 cinespoilers/
 ├── public/
-│   ├── vite.svg          # Default favicon (we'll replace this)
-│   └── index.html        # Main HTML template
+│   └── index.html
 ├── src/
-│   ├── components/       # Reusable UI components
-│   ├── styles/          # CSS modules and global styles
-│   ├── types/           # TypeScript type definitions
-│   ├── utils/           # Utility functions
-│   ├── App.tsx          # Main application component
-│   ├── main.tsx         # Application entry point
-│   └── index.css        # Global styles
-├── package.json         # Dependencies and scripts
-├── tsconfig.json       # TypeScript configuration
-└── vite.config.ts      # Vite build configuration
+│   ├── ui/components/
+│   ├── css/
+│   ├── shared/types/
+│   ├── shared/mocks/
+│   ├── utils/
+│   ├── App.tsx
+│   └── main.tsx
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
 ```
-
----
 
 ### Initial Cleanup & Setup
 
-**📁 File Cleanup Steps:**
-
-1. **Clean the src folder:**
+**Clean the src folder:**
 ```bash
-# Remove default files we won't need
 rm src/App.css src/assets/react.svg
 ```
 
-2. **Fix import errors:**
-After removing files, you'll see errors in your IDE. This is expected! We'll fix them as we build our components.
-
-3. **Add your custom favicon:**
-Replace `public/vite.svg` with your own `favicon.ico` or `favicon.png`. This personalizes your cinema app right from the start! 🎬
-
-**📁 Create Essential Directories:**
+**Create essential directories:**
 ```bash
-mkdir src/ui/components src/styles src/types src/utils
+mkdir -p src/ui/components/layouts src/ui/components/modules src/ui/components/components src/ui/components/widgets src/css/modules src/shared/types src/shared/mocks src/utils
 ```
 
----
+**Add your custom favicon:**
+Replace `public/vite.svg` with your own `logo.svg` to personalize your cinema app.
 
 ### Development Server
 
-**📁 Start Development:**
 ```bash
 npm run dev
 ```
 
-**✅ Expected Behavior:**
-- 🌐 Opens browser at `http://localhost:5173`
-- ⚡ Hot reload on file changes
-- 🔍 TypeScript error checking in terminal
-- 🛠️ Development tools enabled
-
-**🚨 Initial Errors:** You'll see compilation errors after cleanup - this is normal! We're about to fix them by building our cinema app architecture.
-
----
+Opens browser at `http://localhost:5173` with hot reload enabled.
 
 ### VS Code Extensions
 
-**📦 Recommended Extensions:**
+Recommended:
 - **ES7+ React/Redux/React-Native snippets**
 - **TypeScript Importer**
 - **Auto Rename Tag**
-- **Bracket Pair Colorizer**
 - **CSS Peek**
-- **Thunder Client** (for API testing later)
-
-**⚙️ VS Code Settings:**
-```json
-{
-  "emmet.includeLanguages": {
-    "typescriptreact": "html"
-  },
-  "typescript.preferences.quoteStyle": "double"
-}
-```
-
----
-
-### Project Configuration Files
-
-Your project comes pre-configured with optimal settings:
-
-- **`tsconfig.json`** - Strict type checking enabled
-- **`vite.config.ts`** - Fast development and optimized builds
-- **`package.json`** - Modern React ecosystem dependencies
-- **`.eslintrc.cjs`** - Code quality rules for professional development
-
-🎯 **No manual configuration needed** - everything is set up for professional development out of the box!
-
----
-
-### Verify Setup
-
-**🧪 Quick Test:**
-1. Server running without crashes ✅
-2. Browser shows default Vite + React page ✅
-3. Hot reload works when editing files ✅
-4. TypeScript errors show in terminal ✅
-5. Your custom favicon displays ✅
-
-**🎬 Ready for Action:** Your Cine SpoilerS development environment is now ready for building an amazing cinema experience!
 
 ---
 
 ## 3. Implementation
 
-💡 **Development Tip:** Keep your development server running throughout these steps to catch any errors immediately. Run `npm run dev` and monitor the terminal for TypeScript errors and warnings! 🚀
+💡 **Development Tip:** Keep your development server running throughout these steps. Run `npm run dev` and monitor the terminal for TypeScript errors.
 
 ---
 
-### Step 0: Base Structure - HTML Entry Setup
+### Step 0: HTML Entry Setup
 
-This step prepares your Vite + React + TypeScript project with essential HTML metadata for a professional cinema experience. 🎬✨
+Configure the HTML entry point with essential metadata for professional cinema experience.
 
 **📁 File Path:** `index.html`
 
 **✅ Features:**
-- 🔍 SEO-optimized title and meta description
-- 🎨 Theme color for mobile browsers
-- ⚡ Font preloading for performance
-- 🌟 Proper favicon setup
+- SEO-optimized metadata
+- Theme color for mobile browsers
+- Font preloading for performance
+- Proper favicon setup
 
 **🧩 Code:**
 
 ```html
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -322,59 +195,52 @@ This step prepares your Vite + React + TypeScript project with essential HTML me
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-
 <body class="body">
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
-
 </html>
 ```
 
 **🧠 Architecture Benefits:**
-- 📊 Use descriptive meta descriptions for SEO
-- 🔗 Preconnect to external font providers
-- 📱 Theme color improves mobile experience
+- Descriptive meta for SEO optimization
+- Preconnect reduces font loading time
+- Theme color enhances mobile experience
 
 ---
 
-### Step 1: Styles I Base CSS Architecture for "Cine SpoilerS"
+### Step 1: CSS Architecture Setup
 
-This section contains the **entire CSS system** needed to support the "Cine SpoilerS" React cinema app. It follows your modular, responsive, and animation-rich style methodology with `@property`, keyframes, and scroll-driven interactions. Layered CSS system designed to be:
-- ✅ **Semantic** (HTML5) 📝
-- ✅ **Scalable** (utility-first + BEM partial) 📏
-- ✅ **Customizable** (CSS variables) 🎨
-- ✅ **Responsive** (media queries, clamp units) 📱
-- ✅ **Animated** (using `@property` and keyframes) ✨
+Create a modular CSS system with animations, variables, and responsive design patterns.
 
----
-
-
-**📁 Folder Structure**
+**📁 Folder Structure:**
 
 ```
-src/css/ 📂
-├── index.css 🎨
-└── modules/ 📂
-    ├── properties.css 🛠️
-    ├── variables.css 🌈
-    ├── keyframes.css 🌀
-    ├── globals.css 🌐
-    ├── layout.css 📐
-    ├── components.css 📌
-    ├── elements.css 🧱
-    └── utils.css 🧰
+src/css/
+├── index.css
+└── modules/
+    ├── properties.css
+    ├── variables.css
+    ├── keyframes.css
+    ├── globals.css
+    ├── layout.css
+    ├── components.css
+    ├── elements.css
+    └── utils.css
 ```
 
----
+**✅ Features:**
+- CSS custom properties for animations
+- Centralized design tokens
+- Scroll-based animations
+- Responsive utilities
+- Dark theme support
 
-**✨ `src/css/modules/properties.css`**
+**🧩 Code:**
 
-🎬💨 Enables smooth animations by registering animatable custom properties.
+**`src/css/modules/properties.css`**
 
 ```css
 @property --length {
@@ -390,11 +256,7 @@ src/css/ 📂
 }
 ```
 
----
-
-**🌈 `src/css/modules/variables.css`**
-
-🎯🎨 Centralized design tokens for consistent theming and spacing.
+**`src/css/modules/variables.css`**
 
 ```css
 :root {
@@ -420,65 +282,41 @@ src/css/ 📂
   --primary-font: "Roboto", sans-serif;
   --secondary-font: "Open Sans", sans-serif;
 
-  --primary-background: var(--black-color);
-  --secondary-background: var(--neutral-950);
-  --primary-text: var(--white-color);
-  --secondary-text: var(--neutral-200);
-  --light-primary-text: var(--black-color);
-
-  @media (width >=768px) {
+  @media (width >= 768px) {
     --size: 0.25rem;
   }
 }
 ```
 
----
-
-**🎞️ `src/css/modules/keyframes.css`**
-
-🎥🎨 Scroll-based animations for length and color transitions.
+**`src/css/modules/keyframes.css`**
 
 ```css
 @keyframes change-length {
-  from {
-    --length: var(--initial-length);
-  }
-
-  to {
-    --length: var(--final-length);
-  }
+  from { --length: var(--initial-length); }
+  to { --length: var(--final-length); }
 }
 
 @keyframes change-color {
-  from {
-    --color: var(--initial-color);
-  }
-
-  to {
-    --color: var(--final-color);
-  }
+  from { --color: var(--initial-color); }
+  to { --color: var(--final-color); }
 }
 ```
 
----
-
-**🌐 `src/css/modules/globals.css`**
-
-🖋️⚙️ Global document-level rules.
+**`src/css/modules/globals.css`**
 
 ```css
 :root {
   color-scheme: var(--color-scheme);
   accent-color: var(--primary-color);
   scroll-behavior: smooth;
-  scrollbar-color: var(--primary-color) var(--primary-background);
+  scrollbar-color: var(--primary-color) var(--black-color);
   scrollbar-width: thin;
 }
 
 .body {
   margin: 0;
-  background-color: var(--primary-background);
-  color: var(--primary-text);
+  background-color: var(--black-color);
+  color: var(--white-color);
   font-family: var(--primary-font);
 }
 
@@ -492,8 +330,6 @@ src/css/ 📂
   scroll-margin-top: calc(var(--size) * 32);
 }
 ```
-
----
 
 **📐 `src/css/modules/layout.css`**
 
@@ -546,8 +382,6 @@ src/css/ 📂
 }
 ```
 
----
-
 **🧩 `src/css/modules/components.css`**
 
 🎛️🧱 Reusable styled components with interactive and responsive behavior.
@@ -580,14 +414,14 @@ src/css/ 📂
     background-image:
       radial-gradient(circle at 20% 30%, var(--grad-primary) 0%, transparent 40%),
       radial-gradient(circle at 80% 70%, var(--grad-secondary) 0%, transparent 40%),
-      linear-gradient(135deg, var(--primary-background) 0%, var(--secondary-background) 100%);
+      linear-gradient(135deg, var(--black-color) 0%, var(--neutral-950) 100%);
   }
 
   &> :nth-child(even) {
     background-image:
       radial-gradient(circle at 80% 30%, var(--grad-secondary) 0%, transparent 40%),
       radial-gradient(circle at 20% 70%, var(--grad-primary) 0%, transparent 40%),
-      linear-gradient(135deg, var(--secondary-background) 0%, var(--primary-background) 100%);
+      linear-gradient(135deg, var(--neutral-950) 0%, var(--black-color) 100%);
   }
 }
 
@@ -717,7 +551,7 @@ src/css/ 📂
   flex-direction: column;
   gap: var(--size);
   padding: calc(var(--size) * 4);
-  background-color: var(--secondary-background);
+  background-color: var(--neutral-950);
 }
 
 .footer {
@@ -725,8 +559,6 @@ src/css/ 📂
   box-shadow: 0 0 calc(var(--size) * 0.125) calc(var(--size) * 0.0625) var(--shadow);
 }
 ```
-
----
 
 **📄 `src/css/modules/elements.css`**
 
@@ -842,7 +674,7 @@ src/css/ 📂
 
 .link {
   position: relative;
-  color: var(--primary-text);
+  color: var(--white-color);
   text-decoration: none;
   transition: color var(--transition-duration);
 
@@ -867,8 +699,8 @@ src/css/ 📂
 }
 
 .button {
-  --primary-button-color: var(--primary-background);
-  --primary-button-text: var(--primary-text);
+  --primary-button-color: var(--black-color);
+  --primary-button-text: var(--white-color);
   padding: 0.5em 1em;
   border: calc(var(--size) * 0.125) solid var(--primary-button-color);
   border-radius: calc(var(--size) * 2);
@@ -887,18 +719,18 @@ src/css/ 📂
 
 .button--primary {
   --primary-button-color: var(--primary-color);
-  --primary-button-text: var(--light-primary-text);
+  --primary-button-text: var(--black-color);
 }
 
 .button--outline-primary {
   background-color: transparent;
   --primary-button-color: var(--primary-color);
-  --primary-button-text: var(--primary-text);
+  --primary-button-text: var(--white-color);
 }
 
 .badge {
-  --primary-badge-color: var(--primary-background);
-  --primary-badge-text: var(--primary-text);
+  --primary-badge-color: var(--black-color);
+  --primary-badge-text: var(--white-color);
   padding: 0.25em 0.5em;
   border-radius: calc(var(--size) * 2);
   background-color: var(--primary-badge-color);
@@ -907,11 +739,9 @@ src/css/ 📂
 
 .badge--primary {
   --primary-badge-color: var(--primary-color);
-  --primary-badge-text: var(--light-primary-text);
+  --primary-badge-text: var(--black-color);
 }
 ```
-
----
 
 **🛠️ `src/css/modules/utils.css`**
 
@@ -1022,8 +852,8 @@ src/css/ 📂
   color: var(--shadow);
 }
 
-.c-secondary-text {
-  color: var(--secondary-text);
+.c-neutral-200 {
+  color: var(--neutral-200);
 }
 
 .f-weight-700 {
@@ -1041,12 +871,7 @@ src/css/ 📂
 }
 ```
 
-
----
-
-**🔧 `src/css/index.css`**
-
-📥✨ Entry point for all CSS modules — import and organize styles in order.
+**`src/css/index.css`**
 
 ```css
 @import url("./modules/properties.css");
@@ -1060,33 +885,71 @@ src/css/ 📂
 ```
 
 **🧠 Architecture Benefits:**
-- 💪 **Powerful, scalable, and ready** to deliver professional UI experience
-- 🔄 **Modular structure** allows for easy maintenance and updates
-- ⚡ **Performance optimized** with efficient CSS organization
+- Modular structure allows easy maintenance
+- CSS custom properties enable smooth animations
+- Responsive design with mobile-first approach
+- Scalable system for growing applications
+
+**💡 Note:** The CSS files `layout.css`, `components.css`, `elements.css`, and `utils.css` contain extensive styles that follow the same pattern. They're truncated here but should include complete implementations for all UI components.
 
 ---
 
-### Step 2: TypeScript Types - Movie Data Structure
+### Step 2: Import CSS Styles
 
-Split core application types into organized, maintainable modules for better code structure and developer experience! 📁✨
+Connect your CSS architecture to the React application entry point.
 
-**📁 Folder Structure:**
-```
-src/shared/types/ 📂
-├── movie.types.ts 🎭
-└── tmdb.types.ts 🌐
-```
+**📁 File Path:** `src/main.tsx`
 
 **✅ Features:**
-- 🎭 Core movie interface for cinema app
-- 🧩 Component props interfaces  
-- 📊 Rating system types
-- 🌐 TMDB API response interfaces
-- 🛡️ Strong typing for data consistency
+- CSS import for global styles
+- Prepares React entry point
+- Ensures styles load before components
 
 **🧩 Code:**
 
-**🎭 `src/shared/types/movie.types.ts`**
+```tsx
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+
+import './css/index.css';
+
+import App from './App.tsx';
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
+```
+
+**🧠 Architecture Benefits:**
+- CSS loaded before React renders
+- Single import manages entire style system
+- Vite optimizes CSS bundle automatically
+
+---
+
+### Step 3: TypeScript Type Definitions
+
+Define type-safe interfaces for movies and API responses.
+
+**📁 Folder Structure:**
+
+```
+src/shared/types/
+├── movie.types.ts
+└── tmdb.types.ts
+```
+
+**✅ Features:**
+- Core movie interface for app data
+- TMDB API response types
+- Genre typing with ID mapping
+- Rating system types
+
+**🧩 Code:**
+
+**`src/shared/types/movie.types.ts`**
 
 ```typescript
 export interface Movie {
@@ -1107,7 +970,7 @@ export interface Genre {
 }
 ```
 
-**🌐 `src/shared/types/tmdb.types.ts`**
+**`src/shared/types/tmdb.types.ts`**
 
 ```typescript
 export interface TMDBMovie {
@@ -1149,30 +1012,29 @@ export interface TMDBGenresResponse {
 ```
 
 **🧠 Architecture Benefits:**
-- **Separation of Concerns** 🎯 Internal vs external API types
-- **Maintainability** 🔧 Easy updates when APIs change  
-- **Code Organization** 📂 Clear type boundaries
-- **Import Clarity** 📦 Know exactly what you're importing
-- **Scalability** 🚀 Add new API types without cluttering
+- Separation between internal and external API types
+- Type safety across entire data pipeline
+- Easy maintenance when APIs evolve
+- Clear contracts between components
 
 ---
 
-### Step 3: Movie Data - TMDB Mock Data
+### Step 4: Mock Data Setup
 
-Real-world movie data from TMDB API formatted for TypeScript. This provides realistic content for development and testing! 🎬📊
+Provide realistic TMDB data for development and testing.
 
 **📁 File Path:** `src/shared/mocks/tmdb.mock.ts`
 
 **✅ Features:**
-- 🎞️ Real TMDB movie data
-- 🛡️ TypeScript-safe data structure
-- 🛠️ Utility functions for data transformation
-- 🎭 Genre mapping with fallbacks
+- Real TMDB movie data structure
+- Genre definitions with IDs
+- Multiple movie entries for grid display
+- Type-safe mock implementation
 
 **🧩 Code:**
 
 ```typescript
-import type { TMDBGenresResponse, TMDBNowPlayingResponse } from "../types/tmdb.types";
+import type { TMDBGenresResponse, TMDBNowPlayingResponse } from '../types/tmdb.types';
 
 export const tmdbNowPlayingMock: TMDBNowPlayingResponse = {
   "dates": {
@@ -1666,32 +1528,32 @@ export const tmdbGenresMock: TMDBGenresResponse = {
 ```
 
 **🧠 Architecture Benefits:**
-- **Real movie content** 🎬 for authentic development experience
-- **Type-safe** 🛡️ data structure prevents runtime errors
-- **Genre mapping** 🎭 provides human-readable categories
-- **Scalable structure** 🚀 ready for real API integration
+- Realistic data for authentic development
+- No external API calls during development
+- Easy to extend with more movies
+- Type-safe mock structure
 
 ---
 
-### Step 4: Utility Functions - Data Transformation
+### Step 5: Data Transformation Utilities
 
-Complete the data pipeline with utility functions for transforming TMDB data into our internal Movie format! 🔄⚡
+Transform TMDB API data into your internal Movie format.
 
 **📁 File Path:** `src/utils/movie.utils.ts`
 
 **✅ Features:**
-- 🔄 TMDB to internal Movie data transformation
-- 🖼️ Dynamic image URL generation with fallbacks
-- 🎬 Mock data integration for development
-- 🛡️ Error handling and type safety throughout
-- 🎲 Random data generation for enhanced realism
+- TMDB to Movie data adapter
+- Dynamic image URL generation
+- Random duration and showtime generation
+- Genre mapping with fallbacks
+- Robust error handling
 
 **🧩 Code:**
 
 ```typescript
-import { tmdbGenresMock, tmdbNowPlayingMock } from "../shared/mocks/tmdb.mock";
-import type { Movie } from "../shared/types/movie.types";
-import type { TMDBMovie } from "../shared/types/tmdb.types";
+import { tmdbGenresMock, tmdbNowPlayingMock } from '../shared/mocks/tmdb.mock';
+import type { Movie } from '../shared/types/movie.types';
+import type { TMDBMovie } from '../shared/types/tmdb.types';
 
 export const getImageUrl = (size = 'w342', path: string | null): string => {
   if (!path) return `https://picsum.photos/342/513?random=${Math.floor(Math.random() * 1000)}`;
@@ -1699,10 +1561,7 @@ export const getImageUrl = (size = 'w342', path: string | null): string => {
 };
 
 const generateRandomDuration = (): string => {
-  const durations = [
-    '85 min', '90 min', '95 min', '100 min', '105 min', '110 min', '115 min', '120 min',
-    '125 min', '130 min', '135 min', '140 min', '145 min', '150 min', '155 min', '160 min'
-  ];
+  const durations = ['85 min', '90 min', '95 min', '100 min', '105 min', '110 min', '115 min', '120 min', '125 min', '130 min', '135 min', '140 min', '145 min', '150 min', '155 min', '160 min'];
   return durations[Math.floor(Math.random() * durations.length)];
 };
 
@@ -1717,9 +1576,7 @@ const createGenreMap = () => {
 const genreMap = createGenreMap();
 
 const getMovieGenres = (genreIds: number[]) => {
-  return genreIds
-    .map(id => genreMap[id])
-    .filter(Boolean);
+  return genreIds.map(id => genreMap[id]).filter(Boolean);
 };
 
 const generateRandomShowTimes = (): string[] => {
@@ -1753,25 +1610,24 @@ export const getMoviesFromMockData = (): Movie[] => {
 ```
 
 **🧠 Architecture Benefits:**
-- **Data Transformation** 🔄 Clean separation between external and internal data models
-- **Error Resilience** 🛡️ Fallback mechanisms for missing images and data
-- **Development Experience** 🛠️ Mock data integration for rapid prototyping
-- **Type Safety** 🔒 End-to-end type checking from API to UI components
+- Clean separation between external and internal data
+- Fallback mechanisms for missing data
+- Reusable transformation functions
+- Type-safe data pipeline
 
 ---
 
-### Step 5: Header Component - Navigation Bar
+### Step 6: Header Component
 
-Build a professional, responsive header for the cinema app. Features clean navigation, branding, and mobile-friendly design! 🎬✨
+Build the navigation header with branding and menu.
 
 **📁 File Path:** `src/ui/components/layouts/Header.tsx`
 
 **✅ Features:**
-- 🧭 Professional navigation structure
-- 📱 Mobile-responsive off-canvas menu
-- 🎨 Branded logo and title integration
-- ♿ Accessible link elements and ARIA support
-- 🔗 Clean semantic HTML structure
+- Professional navigation structure
+- Mobile-responsive off-canvas menu
+- Branded logo and title
+- Accessible navigation links
 
 **🧩 Code:**
 
@@ -1802,12 +1658,8 @@ const Header = () => {
           </div>
 
           <div className="f-1 d-flex a-items-center j-content-end g-2">
-            <a href="#signin" className="button button--primary interactive interactive--sm">
-              💕 Sign In
-            </a>
-            <a href="#menu" className="link interactive interactive--2xl md:d-none">
-              📚
-            </a>
+            <a href="#signin" className="button button--primary interactive interactive--sm">Sign In</a>
+            <a href="#menu" className="link interactive interactive--2xl md:d-none">☰</a>
           </div>
         </div>
       </nav>
@@ -1819,26 +1671,26 @@ export default Header;
 ```
 
 **🧠 Architecture Benefits:**
-- **Component Isolation** 🏗️ Self-contained navigation logic
-- **Responsive Design** 📱 Mobile-first approach with off-canvas menu
-- **Semantic Structure** 📋 Proper HTML hierarchy for accessibility
-- **Reusability** 🔄 Easy to integrate across different layouts
-- **Maintainability** 🔧 Clean component structure for future updates
+- Self-contained navigation logic
+- Mobile-first responsive design
+- Semantic HTML structure
+- Easy to modify and maintain
+
+**💡 Test it:** Import and render Header in App.tsx to see your navigation bar.
 
 ---
 
-### Step 6: Footer Component - Contact & Info
+### Step 7: Footer Component
 
-Create a comprehensive footer with dynamic content. Includes branding, navigation links, and copyright information! 📬🌟
+Create a comprehensive footer with links and information.
 
 **📁 File Path:** `src/ui/components/layouts/Footer.tsx`
 
 **✅ Features:**
-- 📅 Dynamic copyright year calculation
-- 🌐 Multiple navigation sections with links
-- 📱 Social media integration
-- 🎨 Responsive grid layout structure
-- 🔗 External links with proper attributes
+- Dynamic copyright year
+- Multiple navigation sections
+- Social media links
+- Responsive grid layout
 
 **🧩 Code:**
 
@@ -1852,97 +1704,38 @@ const Footer = () => {
         <div className="container g-layout g-layout--auto-fit-columns g-10">
           <div className="d-flex f-direction-column g-2">
             <a href="#">
-              <img
-                src="/logo.svg"
-                alt="Cine SpoilerS Logo"
-                width="32"
-                height="32"
-                className="img img--logo"
-              />
+              <img src="/logo.svg" alt="Cine SpoilerS Logo" width="32" height="32" className="img img--logo" />
             </a>
-            <h2 className="interactive interactive--lg c-primary">
-              Cine SpoilerS
-            </h2>
-            <p className="text text--xs c-secondary-text">
-              AI-powered cinema experience. See everything about movies without spoilers! 🎬✨
+            <h2 className="interactive interactive--lg c-primary">Cine SpoilerS</h2>
+            <p className="text text--xs c-neutral-200">
+              AI-powered cinema experience. See everything about movies without spoilers!
             </p>
           </div>
 
           <div className="d-flex f-direction-column g-2">
             <h3 className="interactive interactive--lg">Showtimes</h3>
             <ul className="list d-flex f-direction-column g-1">
-              <li>
-                <a href="#now-showing" className="link interactive interactive--sm c-secondary-text">
-                  🎞️ Now Showing
-                </a>
-              </li>
-              <li>
-                <a href="#coming-soon" className="link interactive interactive--sm c-secondary-text">
-                  🔜 Coming Soon
-                </a>
-              </li>
-              <li>
-                <a href="#premieres" className="link interactive interactive--sm c-secondary-text">
-                  🌟 Premiere Events
-                </a>
-              </li>
+              <li><a href="#now-showing" className="link interactive interactive--sm c-neutral-200">🎞️ Now Showing</a></li>
+              <li><a href="#coming-soon" className="link interactive interactive--sm c-neutral-200">🔜 Coming Soon</a></li>
+              <li><a href="#premieres" className="link interactive interactive--sm c-neutral-200">🌟 Premiere Events</a></li>
             </ul>
           </div>
 
           <div className="d-flex f-direction-column g-2">
             <h3 className="interactive interactive--lg">Explore</h3>
             <ul className="list d-flex f-direction-column g-1">
-              <li>
-                <a href="#faq" className="link interactive interactive--sm c-secondary-text">
-                  ❓ FAQs
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="link interactive interactive--sm c-secondary-text">
-                  📖 About Us
-                </a>
-              </li>
-              <li>
-                <a href="#blog" className="link interactive interactive--sm c-secondary-text">
-                  📝 Cinema Blog
-                </a>
-              </li>
+              <li><a href="#faq" className="link interactive interactive--sm c-neutral-200">❓ FAQs</a></li>
+              <li><a href="#about" className="link interactive interactive--sm c-neutral-200">📖 About Us</a></li>
+              <li><a href="#blog" className="link interactive interactive--sm c-neutral-200">📝 Cinema Blog</a></li>
             </ul>
           </div>
 
           <div className="d-flex f-direction-column g-2">
             <h3 className="interactive interactive--lg">Connect</h3>
             <ul className="list d-flex f-direction-column g-1">
-              <li>
-                <a
-                  href="https://www.instagram.com/elliotgaramendi/"
-                  className="link interactive interactive--sm c-secondary-text"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  📸 Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://x.com/elliotgaramendi"
-                  className="link interactive interactive--sm c-secondary-text"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  🐦 Twitter/X
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.youtube.com/@elliotgaramendi"
-                  className="link interactive interactive--sm c-secondary-text"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  🎥 YouTube
-                </a>
-              </li>
+              <li><a href="https://www.instagram.com/elliotgaramendi/" className="link interactive interactive--sm c-neutral-200" target="_blank" rel="noopener noreferrer">📸 Instagram</a></li>
+              <li><a href="https://x.com/elliotgaramendi" className="link interactive interactive--sm c-neutral-200" target="_blank" rel="noopener noreferrer">🐦 Twitter/X</a></li>
+              <li><a href="https://www.youtube.com/@elliotgaramendi" className="link interactive interactive--sm c-neutral-200" target="_blank" rel="noopener noreferrer">🎥 YouTube</a></li>
             </ul>
           </div>
         </div>
@@ -1951,20 +1744,11 @@ const Footer = () => {
       <nav className="nav">
         <div className="container flexbox flexbox--centered-spacing flexbox--responsive g-2">
           <h2 className="interactive interactive--xs">
-            <a
-              href="https://www.linkedin.com/in/elliotgaramendi/"
-              className="link interactive interactive--xs"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Elliot Garamendi
-            </a>
+            <a href="https://www.linkedin.com/in/elliotgaramendi/" className="link interactive interactive--xs" target="_blank" rel="noopener noreferrer">Elliot Garamendi</a>
             &copy; {currentYear} Cine SpoilerS. All rights reserved.
           </h2>
           <h2 className="interactive interactive--xs">
-            Made with ❤️ by: <a href="https://www.instagram.com/elliotgaramendi/" className="link interactive interactive--xs">
-              Elliot Garamendi
-            </a> for movie lovers! 🍿
+            Made with ❤️ by <a href="https://www.instagram.com/elliotgaramendi/" className="link interactive interactive--xs" target="_blank" rel="noopener noreferrer">Elliot Garamendi</a> for movie lovers!
           </h2>
         </div>
       </nav>
@@ -1976,26 +1760,26 @@ export default Footer;
 ```
 
 **🧠 Architecture Benefits:**
-- **Dynamic Content** 📅 Automatic year updates without manual changes
-- **Organized Navigation** 🗂️ Structured link categories for better UX
-- **External Link Safety** 🔒 Proper rel attributes for security
-- **Grid Layout** 📐 Responsive design that adapts to screen sizes
-- **Brand Consistency** 🎨 Maintains design system throughout
+- Dynamic year prevents manual updates
+- Organized link categories
+- External link safety with rel attributes
+- Responsive grid adapts to screens
+
+**💡 Test it:** Import and render Footer in App.tsx to see your footer section.
 
 ---
 
-### Step 7: Hero Component - Highlight Banner
+### Step 8: Hero Component
 
-Create an impactful hero section that welcomes users to the spoiler-free cinema experience! Features bold typography and compelling CTAs. 🎬🚪
+Create an impactful hero banner with call-to-action buttons.
 
 **📁 File Path:** `src/ui/components/modules/Hero.tsx`
 
 **✅ Features:**
-- 🎯 Compelling headline with brand positioning
-- 🌈 Highlighted brand colors and visual hierarchy  
-- 🔘 Call-to-action buttons for user engagement
-- 📱 Responsive design with centered content
-- 🎬 Cinema-focused messaging and emojis
+- Compelling headline with brand positioning
+- Clear value proposition
+- Call-to-action buttons
+- Responsive centered layout
 
 **🧩 Code:**
 
@@ -2005,24 +1789,14 @@ const Hero = () => {
     <article className="hero">
       <div className="container d-flex f-direction-column a-items-center g-4">
         <h1 className="hero__title t-align-center">
-          🎥 Explore spoiler-free cinema with <span className="c-primary">AI-Powered insights ✨</span>
+          Explore spoiler-free cinema with <span className="c-primary">AI-Powered insights</span>
         </h1>
         <p className="hero__paragraph t-align-center">
-          👋 Welcome to <span className="f-weight-700">Cine SpoilerS</span> 🍿 where you can see everything about movies without the spoilers 🚫. Discover premieres 🌟, reviews 📝, and interactive AR experiences 🔍
+          Welcome to <span className="f-weight-700">Cine SpoilerS</span> where you can see everything about movies without the spoilers. Discover premieres, reviews, and interactive AR experiences.
         </p>
         <div className="d-flex g-4">
-          <a
-            href="#now-showing"
-            className="button button--primary interactive interactive--xl"
-          >
-            🎬 Now Showing
-          </a>
-          <a
-            href="#coming-soon"
-            className="button button--outline-primary interactive interactive--xl"
-          >
-            🔮 Coming Soon
-          </a>
+          <a href="#now-showing" className="button button--primary interactive interactive--xl">🎬 Now Showing</a>
+          <a href="#coming-soon" className="button button--outline-primary interactive interactive--xl">🔮 Coming Soon</a>
         </div>
       </div>
     </article>
@@ -2033,26 +1807,26 @@ export default Hero;
 ```
 
 **🧠 Architecture Benefits:**
-- **Visual Hierarchy** 🎨 Clear content structure with proper heading levels
-- **Action-Oriented** 🎯 Strategic CTA placement for user conversion
-- **Brand Integration** 🏷️ Consistent messaging with app identity
-- **Accessibility** ♿ Semantic HTML structure for screen readers
-- **Responsive Layout** 📱 Flexible design across all devices
+- Clear visual hierarchy
+- Strategic CTA placement
+- Semantic HTML structure
+- Flexible responsive design
+
+**💡 Test it:** Import and render Hero in App.tsx to see your hero banner.
 
 ---
 
-### Step 8: Rating Component - Star Display
+### Step 9: Rating Component
 
-Build a beautiful, reusable star rating component for displaying movie ratings with visual feedback! Perfect for showing user and critic scores. 🌟📊
+Build a star rating display component.
 
 **📁 File Path:** `src/ui/components/widgets/Rating.tsx`
 
 **✅ Features:**
-- ⭐ Dynamic star calculation and rendering
-- 🎨 Visual distinction between full, half, and empty stars
-- 🔧 Configurable maximum rating scale
-- 📊 Numeric rating display alongside stars
-- ♿ Accessible rating information
+- Dynamic star calculation
+- Visual distinction for full, half, and empty stars
+- Configurable maximum rating
+- Numeric rating display
 
 **🧩 Code:**
 
@@ -2071,17 +1845,14 @@ const Rating = ({ value, maxValue = 5 }: RatingProps) => {
     <div className="d-flex a-items-center g-2">
       <div className="d-flex a-items-center g-1">
         {[...Array(fullStars)].map((_, i) => (
-          <span key={`full-star-${i}`} className="interactive interactive--lg c-warning">★</span>
+          <span key={`full-${i}`} className="interactive interactive--lg c-warning">★</span>
         ))}
-        {hasHalfStar && (<span className="interactive interactive--lg">✫</span>)}
+        {hasHalfStar && <span className="interactive interactive--lg">✫</span>}
         {[...Array(emptyStars)].map((_, i) => (
-          <span key={`empty-star-${i}`} className="interactive interactive--lg">☆</span>
+          <span key={`empty-${i}`} className="interactive interactive--lg">☆</span>
         ))}
       </div>
-
-      <span className="interactive interactive--sm c-secondary-text">
-        {value.toFixed(1)}
-      </span>
+      <span className="interactive interactive--sm c-neutral-200">{value.toFixed(1)}</span>
     </div>
   );
 };
@@ -2090,32 +1861,31 @@ export default Rating;
 ```
 
 **🧠 Architecture Benefits:**
-- **Reusable Logic** 🔄 Works with any rating scale and precision
-- **Visual Clarity** 👁️ Instant rating comprehension through star icons
-- **Mathematical Precision** 🔢 Accurate star calculations for any rating
-- **Flexible Configuration** ⚙️ Customizable maximum values for different scales
-- **Performance Optimized** ⚡ Efficient array rendering with proper keys
+- Reusable across different rating scales
+- Visual clarity with star icons
+- Mathematical precision for any rating
+- Performance optimized with proper keys
 
 ---
 
-### Step 9: MovieCard Component - Movie Display
+### Step 10: MovieCard Component
 
-Create a stunning movie card component that showcases all movie details! Features poster, rating, genre, and interactive showtimes. 🎬📋
+Create a movie card showcasing poster, rating, and details.
 
 **📁 File Path:** `src/ui/components/components/MovieCard.tsx`
 
 **✅ Features:**
-- 🖼️ Movie poster with lazy loading optimization
-- ⭐ Integrated Rating component for visual appeal
-- 🎭 Genre badge with prominent positioning
-- ⏰ Interactive showtime selection buttons
-- 📝 Smart description truncation for card layout
+- Movie poster with lazy loading
+- Integrated Rating component
+- Genre badge display
+- Interactive showtime buttons
+- Smart description truncation
 
 **🧩 Code:**
 
 ```tsx
-import type { Movie } from "../../../shared/types/movie.types";
-import Rating from "../widgets/Rating";
+import type { Movie } from '../../../shared/types/movie.types';
+import Rating from '../widgets/Rating';
 
 interface MovieCardProps {
   movie: Movie;
@@ -2135,7 +1905,9 @@ const MovieCard = ({ movie }: MovieCardProps) => {
           loading="lazy"
           className="card__image"
         />
-        <span className="badge badge--primary interactive p-absolute t-2 r-2 f-weight-700">{genres[0].name}</span>
+        <span className="badge badge--primary interactive p-absolute t-2 r-2 f-weight-700">
+          {genres[0].name}
+        </span>
       </div>
 
       <div className="card__body f-1 g-2">
@@ -2146,11 +1918,12 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         </div>
         <p className="text text--sm c-shadow">{description.slice(0, 128)}...</p>
         <div className="d-flex f-direction-column g-2 m-top-auto">
-          <h4 className="subtitle subtitle--2xs c-primary">Today's Showtimes ⏰</h4>
+          <h4 className="subtitle subtitle--2xs c-primary">Today's Showtimes</h4>
           <div className="d-flex f-wrap g-2">
             {showTimes.map((time, index) => (
               <a
                 key={index}
+                href="#"
                 className="button button--outline-primary interactive interactive--sm"
                 aria-label={`Book showtime ${time} for ${title}`}
               >
@@ -2168,26 +1941,26 @@ export default MovieCard;
 ```
 
 **🧠 Architecture Benefits:**
-- **Component Composition** 🧩 Integrates Rating component for code reuse
-- **Performance Optimization** ⚡ Lazy loading images for better page speed
-- **User Experience** 🎯 Interactive elements with proper accessibility
-- **Content Management** 📝 Smart text truncation maintains layout integrity
-- **Design Consistency** 🎨 Follows established card pattern across app
+- Component composition with Rating
+- Performance optimized with lazy loading
+- Interactive elements with accessibility
+- Content management with truncation
+- Design consistency across cards
 
 ---
 
-### Step 10: MovieGrid Component - Grid Section
+### Step 11: MovieGrid Component
 
-Display your movie collection in a responsive grid layout! Renders MovieCard components dynamically with proper empty states. 🎬📱
+Display movies in a responsive grid layout.
 
 **📁 File Path:** `src/ui/components/modules/MovieGrid.tsx`
 
 **✅ Features:**
-- 📊 Dynamic movie grid with responsive layout
-- 🎬 Section header with compelling messaging
-- 🎭 Empty state handling for no movies scenario
-- 🧩 MovieCard integration for consistent display
-- 📱 Auto-fit grid columns for all screen sizes
+- Dynamic movie grid rendering
+- Section header with messaging
+- Empty state handling
+- MovieCard integration
+- Auto-fit responsive columns
 
 **🧩 Code:**
 
@@ -2204,10 +1977,8 @@ const MovieGrid = ({ movies }: MovieGridProps) => {
     <section id="now-showing" className="section">
       <div className="container d-flex f-direction-column g-8">
         <div className="d-flex f-direction-column a-items-center g-2">
-          <h2 className="title c-primary t-align-center">
-            Now Showing 🎬
-          </h2>
-          <p className="text text--lg c-secondary-text t-align-center">
+          <h2 className="title c-primary t-align-center">Now Showing</h2>
+          <p className="text text--lg c-neutral-200 t-align-center">
             Discover the latest movies without spoilers - see everything you need to know!
           </p>
         </div>
@@ -2217,12 +1988,8 @@ const MovieGrid = ({ movies }: MovieGridProps) => {
             movies.map(movie => <MovieCard key={movie.id} movie={movie} />)
           ) : (
             <div className="d-flex f-direction-column a-items-center g-4">
-              <p className="text c-secondary-text">
-                🎭 No movies available right now
-              </p>
-              <p className="text c-secondary-text">
-                Check back soon for the latest releases!
-              </p>
+              <p className="text c-neutral-200">No movies available right now</p>
+              <p className="text c-neutral-200">Check back soon for the latest releases!</p>
             </div>
           )}
         </div>
@@ -2235,36 +2002,36 @@ export default MovieGrid;
 ```
 
 **🧠 Architecture Benefits:**
-- **Conditional Rendering** 🎯 Graceful handling of empty states
-- **Grid Responsiveness** 📱 Automatic column adjustment for different screens
-- **Component Reusability** 🔄 Clean separation between list and card logic
-- **Content Strategy** 📝 Clear messaging that aligns with brand promise
-- **Performance Efficiency** ⚡ Optimal rendering with proper key props
+- Conditional rendering for empty states
+- Grid responsiveness with auto-fit
+- Component reusability with separation
+- Clear messaging aligned with brand
+- Performance efficient with proper keys
 
 ---
 
-### Step 11: App Component - Main Orchestrator
+### Step 12: App Component
 
-The central component that orchestrates your entire application! Combines all components and manages the overall layout structure. 🎬🔧
+Orchestrate all components into the main application.
 
 **📁 File Path:** `src/App.tsx`
 
 **✅ Features:**
-- 🏗️ Complete application layout orchestration
-- 📦 Component composition with proper hierarchy
-- 🎬 Movie data integration and management
-- 🌐 Semantic HTML structure with main content area
-- 🔧 Clean imports and component organization
+- Complete application layout
+- Component composition with hierarchy
+- Movie data integration
+- Semantic HTML structure
+- Clean imports organization
 
 **🧩 Code:**
 
 ```tsx
-import type { Movie } from "./shared/types/movie.types";
-import Footer from "./ui/components/layouts/Footer";
-import Header from "./ui/components/layouts/Header";
-import Hero from "./ui/components/modules/Hero";
-import MovieGrid from "./ui/components/modules/MovieGrid";
-import { getMoviesFromMockData } from "./utils/movie.utils";
+import type { Movie } from './shared/types/movie.types';
+import Footer from './ui/components/layouts/Footer';
+import Header from './ui/components/layouts/Header';
+import Hero from './ui/components/modules/Hero';
+import MovieGrid from './ui/components/modules/MovieGrid';
+import { getMoviesFromMockData } from './utils/movie.utils';
 
 const App = () => {
   const movies: Movie[] = getMoviesFromMockData();
@@ -2285,64 +2052,27 @@ export default App;
 ```
 
 **🧠 Architecture Benefits:**
-- **Single Responsibility** 🎯 App focuses solely on layout composition
-- **Data Flow Management** 📊 Centralized movie data distribution
-- **Semantic Structure** 📋 Proper HTML landmarks for accessibility
-- **Component Hierarchy** 🏗️ Clear parent-child relationships
-- **Maintainability** 🔧 Easy to modify layout or add new sections
+- Single responsibility for layout composition
+- Centralized data management
+- Semantic HTML landmarks
+- Clear parent-child relationships
+- Easy to modify or extend
 
 ---
-
-### Step 12: React Entry Point & Final Setup
-
-Configure the React entry point and finalize the application setup! 🚀⚡
-
-**📁 File Path:** `src/main.tsx`
-
-**✅ Features:**
-- 🚀 Modern React entry point with strict mode
-- 🎨 CSS imports for complete styling
-- ⚡ Error handling and development setup
-- 🛡️ Type safety throughout the application
-- 🔧 Ready for production deployment
-
-**🧩 Code:**
-
-```tsx
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-
-import App from './App.tsx';
-
-import './css/index.css';
-
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
-```
-
-**🧠 Architecture Benefits:**
-- **Modern React Patterns** ⚡ Latest React APIs with proper error boundaries
-- **Development Experience** 🛠️ Strict mode catches potential issues early
-- **Performance Optimization** 🚀 Optimized rendering with concurrent features
-- **CSS Integration** 🎨 Complete styling system loaded
-- **Production Ready** 📦 Configured for deployment and scaling
 
 ## 4. Congratulations!
 
 You've successfully built your first **React + TypeScript cinema application** featuring:
 
-- ✅ **Type-safe component architecture** with interfaces
-- ✅ **Real TMDB movie data** with proper typing
-- ✅ **Responsive design** ready for all devices
-- ✅ **Reusable components** (Rating, MovieCard, etc.)
-- ✅ **Professional project structure** following best practices
-- ✅ **Clean CSS architecture** with semantic classes
-- ✅ **Accessible HTML** with proper ARIA labels
+- ✅ Type-safe component architecture with interfaces
+- ✅ Real TMDB movie data with proper typing
+- ✅ Responsive design ready for all devices
+- ✅ Reusable components (Rating, MovieCard, etc.)
+- ✅ Professional project structure following best practices
+- ✅ Clean CSS architecture with semantic classes
+- ✅ Accessible HTML with proper ARIA labels
 
-**🔧 Your Tech Stack:**
+**Your Tech Stack:**
 - **React 19** with latest features
 - **TypeScript** for type safety
 - **Vite** for lightning-fast development
@@ -2351,19 +2081,19 @@ You've successfully built your first **React + TypeScript cinema application** f
 
 ---
 
-## 5. Next Steps - Group 2 Preview
+## 5. Next Steps
 
-🚀 **Coming up in Group 2:**
+**Coming up in Group 2:**
 
-> **"🪝 Hooks Essentials & Interactive Rendering"**
->
-> - **useState & useEffect** - Managing component state and side effects
-> - **Event handling** - Click, form, and keyboard interactions
-> - **Conditional rendering** - Dynamic UI based on state
-> - **List rendering** - Dynamic movie lists with filtering
-> - **Custom hooks** - Creating reusable stateful logic
-> - **Forms & validation** - User input with TypeScript
->
-> **🎯 Challenge:** Transform your static movie app into a fully interactive experience with favorites, search, and dynamic filtering!
+**"Hooks Essentials & Interactive Rendering"**
 
-**🎬 Keep building amazing React applications with TypeScript!** 🚀✨
+- **useState & useEffect** - Managing component state and side effects
+- **Event handling** - Click, form, and keyboard interactions
+- **Conditional rendering** - Dynamic UI based on state
+- **List rendering** - Dynamic movie lists with filtering
+- **Custom hooks** - Creating reusable stateful logic
+- **Forms & validation** - User input with TypeScript
+
+**Challenge:** Transform your static movie app into a fully interactive experience with favorites, search, and dynamic filtering!
+
+Keep building amazing React applications with TypeScript!
