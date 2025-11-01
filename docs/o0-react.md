@@ -12,7 +12,6 @@
 * ⚡ **Vite + TypeScript:** Setup moderno con HMR ultra-rápido
 * 🧱 **JSX & Functional Components:** Sintaxis moderna, composición declarativa
 * 📦 **Props & Destructuring:** Tipado con TypeScript básico, defaultProps
-* 🎨 **Tailwind CSS setup:** Utility-first desde el inicio
 * 🔧 **Dev Tools:** React DevTools, Vite inspector
 
 #### 🌐 Temas transversales:
@@ -24,7 +23,7 @@
 * 📐 **Design Patterns:** Composition over inheritance, Single Responsibility
 
 #### 🔧 Reto:
-* **MovieLand App:** Header + Hero + MovieCard grid con datos hardcodeados usando TypeScript interfaces básicas y Tailwind
+* **Cine SpoilerS:** Header + Hero + MovieCard grid con datos hardcodeados usando TypeScript interfaces básicas
 
 ---
 

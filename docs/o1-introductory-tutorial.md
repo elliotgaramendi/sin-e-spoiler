@@ -67,10 +67,10 @@ const MovieTeaser = ({
   title,
   genre = "Unknown",
   rating = 0,
-  onSelect
+  onClick
 }: MovieTeaserProps) => {
   return (
-    <div className="movie__teaser" onClick={onSelect}>
+    <div className="movie__teaser" onClick={onClick}>
       <h2 className="movie__title">{title}</h2>
       <div className="movie__info">
         <span className="genre">{genre}</span>
@@ -94,7 +94,7 @@ export default MovieTeaser;
 Ensure you have:
 - **Node.js** (latest LTS version)
 - **npm** or **yarn** package manager
-- **VS Code** with React/TypeScript extensions
+- **VS Code** with React extensions
 - **Git** for version control
 
 ### Creating the React App
@@ -134,8 +134,10 @@ cinespoilers/
 
 **Clean the src folder:**
 ```bash
-rm src/App.css src/assets/react.svg
+rm -rf src/index.css src/App.css src/assets
 ```
+
+**💡 Note:** The CSS files `index.css` and `App.css` are called by main.tsx and App.tsx respectively, their import must be deleted.
 
 **Create essential directories:**
 ```bash
@@ -143,7 +145,7 @@ mkdir -p src/ui/components/layouts src/ui/components/modules src/ui/components/c
 ```
 
 **Add your custom favicon:**
-Replace `public/vite.svg` with your own `logo.svg` to personalize your cinema app.
+Replace `public/vite.svg` with your own `logo.svg` to personalize your cinema app, and update `index.html` with the new logo path.
 
 ### Development Server
 
@@ -156,10 +158,7 @@ Opens browser at `http://localhost:5173` with hot reload enabled.
 ### VS Code Extensions
 
 Recommended:
-- **ES7+ React/Redux/React-Native snippets**
-- **TypeScript Importer**
-- **Auto Rename Tag**
-- **CSS Peek**
+- **Simple React Snippets**
 
 ---
 
@@ -254,6 +253,7 @@ src/css/
   inherits: true;
   initial-value: transparent;
 }
+
 ```
 
 **`src/css/modules/variables.css`**
@@ -268,7 +268,7 @@ src/css/
   --black-color: #010508;
   --white-color: #FEFEFE;
 
-  --neutral-950: #1B1B1B;
+  --neutral-950: #1E1E1E;
   --neutral-200: #BBB;
 
   --shadow: #FEFEFE80;
@@ -282,24 +282,36 @@ src/css/
   --primary-font: "Roboto", sans-serif;
   --secondary-font: "Open Sans", sans-serif;
 
-  @media (width >= 768px) {
+  @media (width >=768px) {
     --size: 0.25rem;
   }
 }
+
 ```
 
 **`src/css/modules/keyframes.css`**
 
 ```css
 @keyframes change-length {
-  from { --length: var(--initial-length); }
-  to { --length: var(--final-length); }
+  from {
+    --length: var(--initial-length);
+  }
+
+  to {
+    --length: var(--final-length);
+  }
 }
 
 @keyframes change-color {
-  from { --color: var(--initial-color); }
-  to { --color: var(--final-color); }
+  from {
+    --color: var(--initial-color);
+  }
+
+  to {
+    --color: var(--final-color);
+  }
 }
+
 ```
 
 **`src/css/modules/globals.css`**
@@ -329,6 +341,7 @@ src/css/
 .main *[id] {
   scroll-margin-top: calc(var(--size) * 32);
 }
+
 ```
 
 **📐 `src/css/modules/layout.css`**
@@ -380,6 +393,7 @@ src/css/
 .g-layout--auto-fit-columns-lg {
   grid-template-columns: repeat(auto-fit, minmax(calc(var(--size) * 80), 1fr));
 }
+
 ```
 
 **🧩 `src/css/modules/components.css`**
@@ -890,7 +904,7 @@ src/css/
 - Responsive design with mobile-first approach
 - Scalable system for growing applications
 
-**💡 Note:** The CSS files `layout.css`, `components.css`, `elements.css`, and `utils.css` contain extensive styles that follow the same pattern. They're truncated here but should include complete implementations for all UI components.
+**💡 Note:** For styles to be applied, the CSS file `index.css` must be imported.
 
 ---
 

@@ -36,7 +36,7 @@ src/css/modules/ 📂
 .form__input {
   padding: 0.75em 1.25em;
   border: calc(var(--size) * 0.5) solid var(--primary-color);
-  border-radius: var(--border-radius);
+  border-radius: calc(var(--size) * 2);
   box-shadow:
     0 0 calc(var(--size) * 2) 0 var(--primary-color),
     0 0 calc(var(--size) * 5) 0 var(--secondary-color);
@@ -59,6 +59,8 @@ src/css/modules/ 📂
     color: var(--secondary-text);
   }
 }
+
+/* ... rest of file ... */
 ```
 
 **🧱 `src/css/modules/elements.css`**
@@ -69,12 +71,16 @@ src/css/modules/ 📂
   font-size: calc(var(--size) * 4.5);
 }
 
-/* ... existing .button--primary rules ... */
+/* ... existing .text rules ... */
+
+/* ... existing .button rules ... */
 
 .button--secondary {
   --primary-button-color: var(--secondary-color);
   --primary-button-text: var(--primary-text);
 }
+
+/* ... rest of file ... */
 ```
 
 **🧰 `src/css/modules/utils.css`**
@@ -84,6 +90,8 @@ src/css/modules/ 📂
 .l-2 {
   left: calc(var(--size) * 2);
 }
+
+/* ... rest of file ... */
 ```
 
 **🧠 Architecture Benefits:**
@@ -99,7 +107,7 @@ src/css/modules/ 📂
 
 Build a flexible, accessible button component with variant support and full customization options! 🧩🎨
 
-**📁 File Path:** `src/ui/components/elements/Button.tsx`
+**📁 File Path:** `src/ui/components/elements/AppButton.tsx`
 
 **✅ Features:**
 - 🧒 Flexible children prop for text, icons, or mixed content
@@ -111,7 +119,7 @@ Build a flexible, accessible button component with variant support and full cust
 **🧩 Code:**
 
 ```tsx
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 interface AppButtonProps {
   type?: 'button' | 'submit' | 'reset';
@@ -277,21 +285,21 @@ const MovieSearch = ({ onSearch }: MovieSearchProps) => {
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      onSearch(input.trim());
+      onSearch(input);
     }, 500);
 
     return () => clearTimeout(handler);
   }, [input, onSearch]);
 
   return (
-    <form className="form" aria-label="Movie search">
+    <form className="form" aria-label="Movie search form">
       <input
         type="search"
+        placeholder="🔍 Search for a movie..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Search movies... 🎬"
-        className="form__input interactive interactive--xl t-align-center"
-        aria-label="Search movies"
+        className="form__input interactive interactive--xl"
+        aria-label="Search for a movie"
       />
     </form>
   );
@@ -313,7 +321,7 @@ export default MovieSearch;
 
 Transform the MovieGrid into a flexible MovieList component with comprehensive state management! 🧩📱
 
-**📁 File Path:** `src/ui/components/modules/MovieList.tsx`
+**📁 File Path:** `src/ui/components/modules/MovieGrid.tsx`
 
 **✅ Features:**
 - 🎬 Flexible section rendering with custom ID and title
@@ -395,37 +403,34 @@ Enhance the hero section with integrated search functionality and compelling cal
 import MovieSearch from '../components/MovieSearch';
 
 interface HeroProps {
-  handleEvent: (searchTerm: string) => void;
+  handleSearch: (searchTerm: string) => void;
 }
 
-const Hero = ({ handleEvent }: HeroProps) => {
+const Hero = ({ handleSearch }: HeroProps) => {
   return (
     <article className="hero">
-      <div className="container d-flex f-direction-column a-items-center g-8">
+      <div className="container d-flex f-direction-column a-items-center g-5">
         <h1 className="hero__title t-align-center">
-          Explore spoiler-free cinema with{" "}
-          <span className="c-primary">AI reviews</span>
+          🎥 Explore spoiler-free cinema with <span className="c-primary">AI-Powered insights ✨</span>
         </h1>
-        <div className="d-flex f-direction-column a-items-center g-4">
-          <p className="hero__paragraph t-align-center">
-            Your movie app with advanced features, premieres, and interactive AR experiences. 🎬✨
-          </p>
-          <div className="flexbox flexbox--responsive g-4">
-            <a
-              href="#movies"
-              className="button button--primary interactive interactive--xl"
-            >
-              🎬 Browse Movies
-            </a>
-            <a 
-              href="#coming-soon" 
-              className="button button--outline-primary interactive interactive--xl"
-            >
-              🍃 Coming Soon
-            </a>
-          </div>
+        <p className="hero__paragraph t-align-center">
+          👋 Welcome to <span className="f-weight-700">Cine SpoilerS</span> 🍿 where you can see everything about movies without the spoilers 🚫. Discover premieres 🌟, reviews 📝, and interactive AR experiences 🔍
+        </p>
+        <div className="d-flex g-4">
+          <a
+            href="#now-showing"
+            className="button button--primary interactive interactive--xl"
+          >
+            🎬 Now Showing
+          </a>
+          <a
+            href="#coming-soon"
+            className="button button--outline-primary interactive interactive--xl"
+          >
+            🔮 Coming Soon
+          </a>
         </div>
-        <MovieSearch onSearch={handleEvent} />
+        <MovieSearch onSearch={handleSearch} />
       </div>
     </article>
   );
@@ -464,7 +469,7 @@ import type { Movie } from './shared/types/movie.types';
 import Footer from './ui/components/layouts/Footer';
 import Header from './ui/components/layouts/Header';
 import Hero from './ui/components/modules/Hero';
-import MovieList from './ui/components/modules/MovieList';
+import MovieGrid from './ui/components/modules/MovieGrid';
 import { getMoviesFromMockData } from './utils/movie.utils';
 
 const FAVORITE_KEY = 'cine-spoilers-favorites';
@@ -475,8 +480,7 @@ const App = () => {
     const stored = localStorage.getItem(FAVORITE_KEY);
     return stored ? JSON.parse(stored) : [];
   });
-
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleToggleFavorite = (movie: Movie) => {
     setFavorites(prev => {
@@ -489,24 +493,22 @@ const App = () => {
     });
   };
 
-  const filteredMovies = movies.filter(movie =>
-    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <>
       <Header />
       <main className="main">
-        <Hero handleEvent={setSearchTerm} />
-        <MovieList
-          id="movies"
+        <Hero handleSearch={setSearchTerm} />
+        <MovieGrid
+          id="now-showing"
           title="Now Showing 🎬"
           movies={filteredMovies}
           favorites={favorites}
           onToggleFavorite={handleToggleFavorite}
         />
         {favorites.length > 0 && (
-          <MovieList
+          <MovieGrid
             id="favorites"
             title="❤️ Your Favorites ❤️"
             movies={favorites}
